@@ -12,8 +12,9 @@ export default function Index() {
       <header>
         <Navbar />
       </header>
-      <main className='mt-1'>
-        <Outlet/>
+      <main className='mt-16 lg:mt-20'>
+        {/* <Outlet/> */}
+        <img src='https://fakeimg.pl/1200/ffffff/' alt='' />
       </main>
     </>
   );
