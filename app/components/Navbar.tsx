@@ -8,30 +8,8 @@ const Navbar = () => {
     setShowMobileMenu((prevShowMobileMenu) => !prevShowMobileMenu);
   };
 
-  const menuBorder = () => {
-    const navLinksMob = document.getElementById("nav-links-mob");
-    const menuBar = document.getElementById("navbar");
-
-    if (navLinksMob && menuBar) {
-      if (!window.scrollY && !navLinksMob.classList.contains("hidden")) {
-        menuBar.classList.add("shadow-lg");
-        menuBar.classList.remove("bg-gray-800", "text-white");
-        menuBar.classList.add("bg-white", "text-gray-800");
-      } else if (!window.scrollY) {
-        menuBar.classList.remove("shadow-lg");
-        menuBar.classList.remove("bg-gray-800", "text-white");
-        menuBar.classList.add("bg-white", "text-gray-800");
-      } else {
-        menuBar.classList.add("shadow-lg");
-        menuBar.classList.add("bg-gray-800", "text-white");
-        menuBar.classList.remove("bg-white", "text-gray-800");
-      }
-    }
-  };
-
+  // add resize event listener
   useEffect(() => {
-    menuBorder();
-
     const handleResize = (e: Event) => {
       const { target } = e;
       if (target) {
@@ -43,19 +21,50 @@ const Navbar = () => {
     };
 
     window.addEventListener("resize", (e) => handleResize(e));
-    window.addEventListener("scroll", menuBorder);
 
     return () => {
       window.removeEventListener("resize", (e) => handleResize(e));
-      window.removeEventListener("scroll", menuBorder);
+    };
+  }, []);
+
+  // add menuBorder event listener
+  useEffect(() => {
+    const navLinksMob = document.getElementById("nav-links-mob");
+    const menuBar = document.getElementById("navbar");
+
+    function menuBorder() {
+      if (!navLinksMob || !menuBar) return;
+
+      if (!window.scrollY && !navLinksMob.classList.contains("hidden")) {
+        menuBar.classList.add("shadow-lg", "shadow-red-400");
+        menuBar.classList.remove("bg-gray-800", "text-white");
+        menuBar.classList.add("bg-white", "text-gray-800");
+      } else if (!window.scrollY) {
+        menuBar.classList.remove("shadow-lg", "shadow-red-400");
+        menuBar.classList.remove("bg-gray-800", "text-white");
+        menuBar.classList.add("bg-white", "text-gray-800");
+      } else {
+        menuBar.classList.add("shadow-lg", "shadow-red-400");
+        menuBar.classList.add("bg-gray-800", "text-white");
+        menuBar.classList.remove("bg-white", "text-gray-800");
+      }
+    }
+
+    menuBorder();
+    window.addEventListener("scroll", () => menuBorder());
+    window.addEventListener("click", () => menuBorder());
+
+    return () => {
+      window.removeEventListener("scroll", () => menuBorder());
+      window.removeEventListener("click", () => menuBorder());
     };
   }, []);
 
   return (
     <nav
-      className='p-4 z-10 bg-white fixed w-full top-[0] left-0 transition ease-in-out duration-300'
+      className='px-4 z-10 bg-white fixed w-full top-[0] left-0 transition ease-in-out duration-300'
       id='navbar'>
-      <div className='container mx-auto flex justify-between items-center'>
+      <div className='container h-20 mx-auto flex justify-between items-center'>
         <div className='text-2xl font-bold'>Mike Francis</div>
         <div className='block lg:hidden'>
           <button id='menu-button' className='focus:outline-none'>
@@ -107,12 +116,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* <ul
+      <ul
         id='nav-links-mob'
-        className={`${
-          showMobileMenu === false ? "hidden" : ""
-        } fixed top-[64px] left-0 w-full z-10 bg-white px-4 pb-4`}> */}
-      <ul id='nav-links-mob' className={`${showMobileMenu === false ? "hidden" : ""}`}>
+        className={`px-4 pb-4 ${showMobileMenu === false ? "hidden" : ""}`}>
         <li>
           <NavLink
             to='#'
