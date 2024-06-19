@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
+import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
 
 export const meta: MetaFunction = () => {
@@ -12,9 +13,10 @@ export default function Index() {
       <header>
         <Navbar />
       </header>
-      <main className='mt-16 lg:mt-20'>
+      <main className='mt-20'>
         {/* <Outlet/> */}
-        <img src='https://fakeimg.pl/1200/ffffff/' alt='' />
+        {/* <img src='https://fakeimg.pl/1200/ffffff/' alt='' /> */}
+        <Hero />
       </main>
     </>
   );
