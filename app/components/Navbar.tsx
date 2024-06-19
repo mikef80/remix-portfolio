@@ -36,15 +36,15 @@ const Navbar = () => {
       if (!navLinksMob || !menuBar) return;
 
       if (!window.scrollY && !navLinksMob.classList.contains("hidden")) {
-        menuBar.classList.add("shadow-lg", "shadow-red-400");
+        menuBar.classList.add("shadow-lg");
         menuBar.classList.remove("bg-gray-800", "text-white");
         menuBar.classList.add("bg-white", "text-gray-800");
       } else if (!window.scrollY) {
-        menuBar.classList.remove("shadow-lg", "shadow-red-400");
+        menuBar.classList.remove("shadow-lg");
         menuBar.classList.remove("bg-gray-800", "text-white");
         menuBar.classList.add("bg-white", "text-gray-800");
       } else {
-        menuBar.classList.add("shadow-lg", "shadow-red-400");
+        menuBar.classList.add("shadow-lg");
         menuBar.classList.add("bg-gray-800", "text-white");
         menuBar.classList.remove("bg-white", "text-gray-800");
       }

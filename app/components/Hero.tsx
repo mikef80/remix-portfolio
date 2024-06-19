@@ -1,12 +1,14 @@
+import { useState } from "react";
+
 const Hero = () => {
   return (
     // HERO
     <div
       id='hero'
-      className='relative top-0 left-0 h-[calc(100vh-64px-12px)] lg:h-[calc(100vh-72px-12px)] flex justify-center text-center p-4 lg:gap-6'>
+      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex justify-center text-center p-4 lg:gap-6`}>
       <img
         src='https://picsum.photos/1200'
-        className='opacity-50 lg:opacity-100 object-contain h-full'
+        className='opacity-50 lg:opacity-100 object-cover h-full'
         id='hero-img'
       />
 
