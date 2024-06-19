@@ -7,7 +7,7 @@ const Hero = () => {
       id='hero'
       className={`relative top-0 left-0 h-[calc(100vh-80px)] flex justify-center text-center p-4 lg:gap-6`}>
       <img
-        src='https://picsum.photos/1200'
+        src='https://picsum.photos/900'
         className='opacity-50 lg:opacity-100 object-cover h-full'
         id='hero-img'
       />
