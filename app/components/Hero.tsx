@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   return (
     // HERO
     <div
       id='hero'
-      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex justify-center text-center p-4 lg:gap-6`}>
+      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center`}>
       <img
-        src='https://picsum.photos/900'
-        className='opacity-50 lg:opacity-100 object-contain h-full lg:max-w-[50%] max-w-full'
+        src='/media/images/groyne.jpg'
+        className=' object-cover h-full w-full '
         id='hero-img'
+        alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
       />
 
-      <div className='self-center absolute lg:static'>
-        <p className='pb-10'>Hi, I'm Mike</p>
-        <h1 className='text-5xl text-gray-800'>Mike Francis is a wicked Dev!</h1>
-      </div>
+      <h1 className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion'>
+        I am{" "}
+        <TypeAnimation
+          sequence={[
+            "Mike",
+            2000,
+            "a developer",
+            2000,
+            "a creative",
+            2000,
+            "passionate",
+            2000,
+            "driven",
+            2000,
+            "ambitious",
+            2000,
+          ]}
+          wrapper='span'
+          speed={10}
+          deletionSpeed={20}
+          repeat={Infinity}
+        />
+      </h1>
+
+      <button className='text-6xl text-gray-100 absolute bottom-1 left-[45%] mix-blend-exclusion animate-bounce'>
+        &darr;
+      </button>
     </div>
     // END HERO
   );
