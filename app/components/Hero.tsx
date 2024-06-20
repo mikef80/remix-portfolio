@@ -13,7 +13,7 @@ const Hero = () => {
         alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
       />
 
-      <h1 className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion'>
+      <h1 className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion w-full text-center'>
         I am{" "}
         <TypeAnimation
           sequence={[
@@ -37,7 +37,9 @@ const Hero = () => {
         />
       </h1>
 
-      <button className='text-6xl text-gray-100 absolute bottom-1 left-[45%] mix-blend-exclusion animate-bounce'>
+      <button
+        className='text-6xl text-gray-100 absolute bottom-1 left-[45%] mix-blend-exclusion animate-bounce'
+        onClick={() => console.count("scroll!")}>
         &darr;
       </button>
     </div>
