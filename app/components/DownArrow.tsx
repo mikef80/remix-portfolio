@@ -1,4 +1,4 @@
-const DownArrow = ({ strokeWidth = 2,stroke='#393939' }) => (
+const DownArrow = ({ strokeWidth = 2, stroke = "#393939" }) => (
   <svg
     width='24'
     height='24'
