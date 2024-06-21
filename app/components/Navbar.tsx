@@ -65,7 +65,7 @@ const Navbar = () => {
       className='px-4 z-10 bg-white fixed w-full top-[0] left-0 transition ease-in-out duration-300'
       id='navbar'>
       <div className='container h-20 mx-auto flex justify-between items-center'>
-        <div className='text-2xl font-bold'>Mike Francis</div>
+        <div className='text-4xl font-bold font-raleway'>Mike Francis</div>
         <div className='block lg:hidden'>
           <button id='menu-button' className='focus:outline-none'>
             <svg
