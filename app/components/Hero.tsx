@@ -39,9 +39,10 @@ const Hero = () => {
       </h1>
 
       <button
-        className='text-6xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'
+        className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'
         onClick={() => console.count("scroll!")}>
         {/* &darr; */}
+        {/* <DownArrow strokeWidth={2} stroke="#aaaaaa" /> */}
         <DownArrow strokeWidth={2} stroke="#454545" />
       </button>
     </div>
