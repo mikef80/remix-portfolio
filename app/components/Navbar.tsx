@@ -94,7 +94,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to='#'
+              to='#about-content'
               className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
               About
             </NavLink>

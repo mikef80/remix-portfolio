@@ -7,7 +7,7 @@ export default function App() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='en' className='scroll-smooth'>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -22,7 +22,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="font-roboto">
+      <body className={`font-roboto relative top-[80px]`}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
