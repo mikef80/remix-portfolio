@@ -1,5 +1,6 @@
 import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
+import { Link } from "@remix-run/react";
 
 const Hero = () => {
   return (
@@ -45,9 +46,9 @@ const Hero = () => {
         <DownArrow strokeWidth={2} stroke='#aaaaaa' />
         <DownArrow strokeWidth={2} stroke="#454545" />
       </button> */}
-      <a href='#about-content' className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'>
+      <Link to='#about-content' className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'>
         <DownArrow strokeWidth={2} stroke='#aaaaaa' />
-      </a>
+      </Link>
     </div>
     // END HERO
   );
