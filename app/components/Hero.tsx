@@ -46,7 +46,9 @@ const Hero = () => {
         <DownArrow strokeWidth={2} stroke='#aaaaaa' />
         <DownArrow strokeWidth={2} stroke="#454545" />
       </button> */}
-      <Link to='#about-content' className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'>
+      <Link
+        to='#about-content'
+        className='text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce'>
         <DownArrow strokeWidth={2} stroke='#aaaaaa' />
       </Link>
     </div>
