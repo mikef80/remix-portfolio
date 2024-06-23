@@ -2,8 +2,6 @@ import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
 
 const Hero = () => {
-  
-
   return (
     // HERO
     <div
@@ -40,13 +38,16 @@ const Hero = () => {
         />
       </h1>
 
-      <button
+      {/* <button
         className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'
         onClick={() => console.count("scroll!")}>
-        {/* &darr; */}
-        <DownArrow strokeWidth={2} stroke="#aaaaaa" />
-        {/* <DownArrow strokeWidth={2} stroke="#454545" /> */}
-      </button>
+        
+        <DownArrow strokeWidth={2} stroke='#aaaaaa' />
+        <DownArrow strokeWidth={2} stroke="#454545" />
+      </button> */}
+      <a href='#about-content' className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'>
+        <DownArrow strokeWidth={2} stroke='#aaaaaa' />
+      </a>
     </div>
     // END HERO
   );
