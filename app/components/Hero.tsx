@@ -36,6 +36,7 @@ const Hero = () => {
           speed={10}
           deletionSpeed={20}
           repeat={Infinity}
+          style={{ color: "Aqua",opacity:'0.7' }}
         />
       </h1>
 
