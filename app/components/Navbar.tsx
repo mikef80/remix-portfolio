@@ -1,8 +1,10 @@
-import { NavLink, Link } from "@remix-run/react";
+import { NavLink, Link, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const location = useLocation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  console.log(location);
 
   const onToggle = () => {
     setShowMobileMenu((prevShowMobileMenu) => !prevShowMobileMenu);
@@ -60,6 +62,9 @@ const Navbar = () => {
     };
   }, []);
 
+  const activeLinkStyle = "underline underline-offset-4";
+  const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
+
   return (
     <nav
       className='px-4 z-10 bg-white fixed w-full top-[0] left-0 transition ease-in-out duration-300'
@@ -90,31 +95,43 @@ const Navbar = () => {
           <li>
             <NavLink
               to='/'
-              className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+              className={({ isActive }) =>
+                `${isActive && location.hash === "" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+              }>
               Home
             </NavLink>
           </li>
           <li>
             <NavLink
-              to='#about-content'
-              className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+              to='/#about-content'
+              className={({ isActive }) =>
+                `${isActive && location.hash === "#about-content" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+              }>
               About
             </NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink
               to='#'
-              className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+              className={({ isActive }) =>
+                `${isActive && location.hash === "#services" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+              }>
               Services
             </NavLink>
           </li>
           <li>
             <NavLink
               to='#'
-              className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+              className={({ isActive }) =>
+                `${isActive && location.hash === "#contact" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+              }>
               Contact
             </NavLink>
-          </li> */}
+          </li>
         </ul>
       </div>
 
@@ -123,29 +140,41 @@ const Navbar = () => {
         className={`px-4 pb-4 ${showMobileMenu === false ? "hidden" : ""}`}>
         <li>
           <NavLink
-            to='#'
-            className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+            to='/'
+            className={({ isActive }) =>
+              `${isActive && location.hash === "" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+            }>
             Home
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='#'
-            className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+            to='/#about-content'
+            className={({ isActive }) =>
+              `${isActive && location.hash === "#about-content" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+            }>
             About
           </NavLink>
         </li>
         <li>
           <NavLink
             to='#'
-            className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+            className={({ isActive }) =>
+              `${isActive && location.hash === "#services" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+            }>
             Services
           </NavLink>
         </li>
         <li>
           <NavLink
             to='#'
-            className='hover:text-white block py-2 px-4 hover:bg-gray-700 rounded'>
+            className={({ isActive }) =>
+              `${isActive && location.hash === "#contact" ? activeLinkStyle : ""} 
+                ${linkStyles}`
+            }>
             Contact
           </NavLink>
         </li>
