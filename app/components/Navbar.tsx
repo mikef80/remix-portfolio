@@ -1,8 +1,8 @@
-import { NavLink, Link, useLocation, Path } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { Link } from "@remix-run/react";
+import { MouseEventHandler, useEffect, useState } from "react";
+import RenderNavLink from "./RenderNavLink";
 
 const Navbar = () => {
-  const location = useLocation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -13,6 +13,7 @@ const Navbar = () => {
     setShowMobileMenu(false);
   };
 
+  // Add window resize event listener
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -28,6 +29,7 @@ const Navbar = () => {
     };
   }, []);
 
+  // Add scroll event listeners
   useEffect(() => {
     const navLinksMob = document.getElementById("nav-links-mob");
     const menuBar = document.getElementById("navbar");
@@ -60,19 +62,26 @@ const Navbar = () => {
     };
   }, []);
 
-  const activeLinkStyle = "underline underline-offset-4";
-  const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
+  // Define navLinks
+  const navLinks = [
+    { to: "", label: "Home", hashCondition: "" },
+    { to: "/#about-content", label: "About", hashCondition: "#about-content" },
+    { to: "#", label: "Services", hashCondition: "#services" },
+    { to: "#", label: "Contact", hashCondition: "#contact" },
+  ];
 
-  const renderNavLink = (to = "/", label: String, hashCondition = "") => (
-    <NavLink
-      to={to}
-      onClick={closeMobileMenu}
-      className={({ isActive }) =>
-        `${isActive && location.hash === hashCondition ? activeLinkStyle : ""} ${linkStyles}`
-      }>
-      {label}
-    </NavLink>
-  );
+  const renderNavLinks = (closeMenuHandler: MouseEventHandler) => {
+    return navLinks.map((link) => (
+      <li key={link.label}>
+        <RenderNavLink
+          to={link.to}
+          label={link.label}
+          hashCondition={link.hashCondition}
+          closeMobileMenu={closeMenuHandler}
+        />
+      </li>
+    ));
+  };
 
   return (
     <nav
@@ -99,17 +108,11 @@ const Navbar = () => {
           </button>
         </div>
         <ul id='nav-links' className='lg:flex lg:items-center lg:space-x-8 hidden'>
-          <li>{renderNavLink("/", "Home")}</li>
-          <li>{renderNavLink("/#about-content", "About", "#about-content")}</li>
-          <li>{renderNavLink("#", "Services", "#services")}</li>
-          <li>{renderNavLink("#", "Contact", "#contact")}</li>
+          {renderNavLinks(closeMobileMenu)}
         </ul>
       </div>
       <ul id='nav-links-mob' className={`px-4 pb-4 ${!showMobileMenu && "hidden"}`}>
-        <li>{renderNavLink("/", "Home")}</li>
-        <li>{renderNavLink("/#about-content", "About", "#about-content")}</li>
-        <li>{renderNavLink("#", "Services", "#services")}</li>
-        <li>{renderNavLink("#", "Contact", "#contact")}</li>
+        {renderNavLinks(closeMobileMenu)}
       </ul>
     </nav>
   );
