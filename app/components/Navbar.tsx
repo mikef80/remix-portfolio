@@ -1,5 +1,6 @@
 import { NavLink, Link, useLocation, Path } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import RenderNavLink from "./RenderNavLink";
 
 const Navbar = () => {
   const location = useLocation();
@@ -60,10 +61,10 @@ const Navbar = () => {
     };
   }, []);
 
-  const activeLinkStyle = "underline underline-offset-4";
-  const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
+  /* const activeLinkStyle = "underline underline-offset-4";
+  const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded"; */
 
-  const renderNavLink = (to = "/", label: String, hashCondition = "") => (
+  /* const RenderNavLink = (to = "/", label: String, hashCondition = "") => (
     <NavLink
       to={to}
       onClick={closeMobileMenu}
@@ -72,7 +73,7 @@ const Navbar = () => {
       }>
       {label}
     </NavLink>
-  );
+  ); */
 
   return (
     <nav
@@ -99,17 +100,73 @@ const Navbar = () => {
           </button>
         </div>
         <ul id='nav-links' className='lg:flex lg:items-center lg:space-x-8 hidden'>
-          <li>{renderNavLink("/", "Home")}</li>
-          <li>{renderNavLink("/#about-content", "About", "#about-content")}</li>
-          <li>{renderNavLink("#", "Services", "#services")}</li>
-          <li>{renderNavLink("#", "Contact", "#contact")}</li>
+          <li>
+            <RenderNavLink
+              to=''
+              label='Home'
+              hashCondition=''
+              closeMobileMenu={closeMobileMenu}
+            />
+          </li>
+          <li>
+            <RenderNavLink
+              to='/#about-content'
+              label='About'
+              hashCondition='#about-content'
+              closeMobileMenu={closeMobileMenu}
+            />
+          </li>
+          <li>
+            <RenderNavLink
+              to='#'
+              label='Services'
+              hashCondition='#services'
+              closeMobileMenu={closeMobileMenu}
+            />
+          </li>
+          <li>
+            <RenderNavLink
+              to='#'
+              label='Contact'
+              hashCondition='#contact'
+              closeMobileMenu={closeMobileMenu}
+            />
+          </li>
         </ul>
       </div>
       <ul id='nav-links-mob' className={`px-4 pb-4 ${!showMobileMenu && "hidden"}`}>
-        <li>{renderNavLink("/", "Home")}</li>
-        <li>{renderNavLink("/#about-content", "About", "#about-content")}</li>
-        <li>{renderNavLink("#", "Services", "#services")}</li>
-        <li>{renderNavLink("#", "Contact", "#contact")}</li>
+        <li>
+          <RenderNavLink
+            to=''
+            label='Home'
+            hashCondition=''
+            closeMobileMenu={closeMobileMenu}
+          />
+        </li>
+        <li>
+          <RenderNavLink
+            to='/#about-content'
+            label='About'
+            hashCondition='#about-content'
+            closeMobileMenu={closeMobileMenu}
+          />
+        </li>
+        <li>
+          <RenderNavLink
+            to='#'
+            label='Services'
+            hashCondition='#services'
+            closeMobileMenu={closeMobileMenu}
+          />
+        </li>
+        <li>
+          <RenderNavLink
+            to='#'
+            label='Contact'
+            hashCondition='#contact'
+            closeMobileMenu={closeMobileMenu}
+          />
+        </li>
       </ul>
     </nav>
   );
