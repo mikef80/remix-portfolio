@@ -7,7 +7,7 @@ import Navbar from "~/components/Navbar";
 import SkipLink from "~/components/SkipLink";
 
 export const meta: MetaFunction = () => {
-  return [{ title: "New Remix App" }, { name: "description", content: "Welcome to Remix!" }];
+  return [{ title: "Mike Francis - Portfolio" }, { name: "description", content: "Welcome to my Portfolio!" }];
 };
 
 export default function Index() {
