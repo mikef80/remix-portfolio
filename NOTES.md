@@ -1,0 +1,1 @@
+- I used this guide for the [dark mode implementation](https://www.mattstobbs.com/remix-dark-mode/
