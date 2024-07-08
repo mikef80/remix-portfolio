@@ -64,7 +64,7 @@ const Navbar = () => {
 
   // Define navLinks
   const navLinks = [
-    { to: "", label: "Home", hashCondition: "" },
+    { to: "/", label: "Home", hashCondition: "" },
     { to: "/#about-content", label: "About", hashCondition: "#about-content" },
     { to: "#", label: "Services", hashCondition: "#services" },
     { to: "#", label: "Contact", hashCondition: "#contact" },

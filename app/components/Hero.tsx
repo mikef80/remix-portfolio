@@ -1,8 +1,29 @@
 import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
 import { Link } from "@remix-run/react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollLink = document.getElementById("scroll-link");
+
+      if (window.scrollY !== 0) {
+        scrollLink?.classList.add("hidden");
+      } else {
+        scrollLink?.classList.remove("hidden");
+      }
+    };
+
+    onScroll();
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     // HERO
     <div
@@ -36,20 +57,14 @@ const Hero = () => {
           speed={10}
           deletionSpeed={20}
           repeat={Infinity}
-          style={{ color: "Aqua",opacity:'0.7' }}
+          style={{ color: "Aqua", opacity: "0.7" }}
         />
       </h1>
 
-      {/* <button
-        className='text-xl text-gray-100 absolute bottom-1 left-[45%] animate-bounce'
-        onClick={() => console.count("scroll!")}>
-        
-        <DownArrow strokeWidth={2} stroke='#aaaaaa' />
-        <DownArrow strokeWidth={2} stroke="#454545" />
-      </button> */}
       <Link
+        id='scroll-link'
         to='#about-content'
-        className='text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce'>
+        className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce hidden`}>
         <DownArrow strokeWidth={2} stroke='#aaaaaa' />
       </Link>
     </div>
@@ -58,3 +73,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
+/* ${
+  window.scrollY !== 0 ? "hidden" : ""
+} */
