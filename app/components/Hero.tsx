@@ -2,6 +2,7 @@ import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
 import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import UpArrow from "./UpArrow";
 
 const Hero = () => {
   useEffect(() => {
