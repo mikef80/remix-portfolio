@@ -22,9 +22,9 @@ export default function Index() {
       <Hero />
       <main id='main' className='scroll-mt-20'>
           <Timeline/>
-        <Content>
+        {/* <Content>
           <About />
-        </Content>
+        </Content> */}
       </main>
     </>
   );
