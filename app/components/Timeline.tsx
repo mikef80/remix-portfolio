@@ -42,24 +42,6 @@ const Timeline = () => {
 
   return (
     // THIS IS THE ONE
-    /* <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='100vw'
-      height='400vw'
-      fill='none'
-      viewBox='0 0 500 2000'
-      className='w-full object-cover squiggle'
-      style={{
-        strokeWidth: "0.5rem",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }}>
-      <path
-        
-        stroke='#f00'
-        d='M206.5-40s-192 171.5 0 272.5S492 486 206.5 652s-261 368.5 0 484.5 201.5 386 0 490.5 0 429 0 429'
-      />
-    </svg> */
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='100vw'
