@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
+import BottomImage from "~/components/BottomImage";
 import Content from "~/components/Content";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
@@ -21,7 +22,8 @@ export default function Index() {
       </header>
       <Hero />
       <main id='main' className='scroll-mt-20'>
-          <Timeline/>
+        <Timeline />
+        <BottomImage/>
         {/* <Content>
           <About />
         </Content> */}
