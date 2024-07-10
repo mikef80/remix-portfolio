@@ -11,7 +11,7 @@ const Timeline = () => {
     const scroll = () => {
       console.clear();
       if (path && svg) {
-        const distance = window.scrollY - (window.innerHeight - 150);
+        const distance = window.scrollY - (window.innerHeight - 300);
 
         const totalDistance = svg.clientHeight - window.innerHeight;
 
