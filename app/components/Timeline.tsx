@@ -11,7 +11,10 @@ const Timeline = () => {
     const scroll = () => {
       console.clear();
       if (path && svg) {
-        const distance = window.scrollY - (window.innerHeight - 300);
+        const navBarHeight = document.getElementById("navbar")?.clientHeight;
+        console.log("navBarHeight: " + navBarHeight);
+
+        const distance = window.scrollY - window.innerHeight;
 
         const totalDistance = svg.clientHeight - window.innerHeight;
 
@@ -20,7 +23,7 @@ const Timeline = () => {
         console.log("totalDistance: " + totalDistance);
 
         const percentage = distance / totalDistance;
-        console.log("percentage: " + percentage);
+        console.log("percentage: " + percentage * 100);
 
         const pathLength = path.getTotalLength();
         console.log("pathLength: " + pathLength);
@@ -46,7 +49,6 @@ const Timeline = () => {
       <img
         src='/media/images/groyne.jpg'
         className=' object-cover h-[400vw] w-full object-left'
-        
         alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
       />
       <svg
@@ -71,3 +73,4 @@ const Timeline = () => {
 };
 
 export default Timeline;
+
