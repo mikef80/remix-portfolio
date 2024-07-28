@@ -1,61 +1,54 @@
-// https://codyhouse.co/gem/vertical-timeline/
-// https://www.npmjs.com/package/react-vertical-timeline-component
+import React, { useEffect } from "react";
 
-import { useEffect } from "react";
-
-const Timeline = () => {
+const Timeline: React.FC = () => {
   useEffect(() => {
-    const svg = document.querySelector("svg.squiggle");
-    const path = svg?.querySelector("path");
+    const path = document.querySelector("#squiggle-path") as SVGPathElement | null;
+    console.log(path);
 
-    const scroll = () => {
-      console.clear();
-      if (path && svg) {
-        const distance = window.scrollY - (window.innerHeight - 300);
+    let pathLength: number;
 
-        const totalDistance = svg.clientHeight - window.innerHeight;
+    if (path) {
+      pathLength = path.getTotalLength();
+      path.style.strokeDasharray = pathLength + " " + pathLength;
+      path.style.strokeDashoffset = `${pathLength}`;
 
-        console.log("svg.clientHeight: " + svg.clientHeight);
-        console.log("window.innerHeight: " + window.innerHeight);
-        console.log("totalDistance: " + totalDistance);
+      const scroll = () => {
+        // What % down is it
+        const scrollPercentage =
+          (document.documentElement.scrollTop + document.body.scrollTop) /
+          (document.documentElement.scrollHeight - document.documentElement.clientHeight);
 
-        const percentage = distance / totalDistance;
-        console.log("percentage: " + percentage);
+        // Length to offset the dashes
+        const drawLength = pathLength * scrollPercentage;
 
-        const pathLength = path.getTotalLength();
-        console.log("pathLength: " + pathLength);
+        // Draw in reverse
+        path.style.strokeDashoffset = `${pathLength - drawLength}`;
+      };
 
-        path.style.strokeDasharray = `${pathLength}`;
-        path.style.strokeDashoffset = `${pathLength * (1 - percentage)}`;
-        console.log("path.style.strokeDashoffset: " + path.style.strokeDashoffset);
-      }
-    };
+      scroll();
 
-    scroll();
+      window.addEventListener("scroll", scroll);
 
-    window.addEventListener("scroll", scroll);
-
-    return () => {
-      window.removeEventListener("scroll", scroll);
-    };
+      return () => {
+        window.removeEventListener("scroll", scroll);
+      };
+    }
   }, []);
 
   return (
-    // THIS IS THE ONE
     <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='100vw'
-      height='400vw'
+      preserveAspectRatio='xMidYMax meet'
       fill='none'
       viewBox='0 0 372 2000'
       className='w-full object-cover squiggle'
       style={{
-        strokeWidth: "0.5rem",
+        strokeWidth: "5px",
         strokeLinecap: "round",
         strokeLinejoin: "round",
       }}>
       <path
-        stroke='#454545'
+        id='squiggle-path'
+        stroke='#1f2937'
         d='M197.649-23s-184.142 165.527 0 263.009c184.143 97.483 273.817 244.671 0 404.89-273.816 160.218-250.319 355.661 0 467.621 250.32 111.96 193.254 372.56 0 473.42-193.253 100.86 0 414.06 0 414.06'
       />
     </svg>
