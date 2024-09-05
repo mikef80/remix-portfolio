@@ -1,8 +1,9 @@
-const DownArrow = ({ strokeWidth = 2, stroke = "#393939" }) => (
+const DownArrow = ({ width = 24, height = 24, strokeWidth = 2, stroke = "#393939" }) => (
   // iconmonstr.com - Angel Down
   <svg
-    width='24'
-    height='24'
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
     xmlns='http://www.w3.org/2000/svg'
     fillRule='evenodd'
     clipRule='evenodd'
