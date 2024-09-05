@@ -2,7 +2,6 @@ import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
 import { Link } from "@remix-run/react";
 import { useEffect, useState, useCallback } from "react";
-import UpArrow from "./UpArrow";
 
 const Hero = () => {
   const [showArrow, setShowArrow] = useState(false);
@@ -21,23 +20,6 @@ const Hero = () => {
     return () => {
       window.removeEventListener("scroll", handleFade);
     };
-    /* const onScroll = () => {
-      const scrollLink = document.getElementById("scroll-link");
-
-      if (window.scrollY !== 0) {
-        scrollLink?.classList.add("hidden");
-      } else {
-        scrollLink?.classList.remove("hidden");
-      }
-    };
-
-    onScroll();
-
-    window.addEventListener("scroll", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    }; */
   }, [handleFade]);
 
   return (
@@ -79,7 +61,8 @@ const Hero = () => {
           speed={10}
           deletionSpeed={20}
           repeat={Infinity}
-          style={{ color: "Aqua", opacity: "0.7" }}
+          // style={{ color: "#FFFF00B3" }}
+          style={{ color: "#00FFFFB3" }}
         />
       </h1>
 
