@@ -32,7 +32,13 @@ const Hero = () => {
       className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center `}>
       <img
         src='/media/images/groyne.jpg'
-        className=' object-cover h-full w-full '
+        // can't decide whether i want the fade in here or not
+        className={`object-cover h-full w-full
+          ${
+            false &&
+            "[mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_99%,rgba(0,0,0,0)_100%)]"
+          }
+        `}
         id='hero-img'
         alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
       />
@@ -66,7 +72,7 @@ const Hero = () => {
         id='scroll-link'
         to='#about-content'
         className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce hidden`}>
-        <DownArrow strokeWidth={2} stroke='#aaaaaa' />
+        <DownArrow width={20} height={20} strokeWidth={2} stroke='#aaaaaa' />
       </Link>
     </div>
     // END HERO
