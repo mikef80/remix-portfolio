@@ -1,12 +1,27 @@
 import { TypeAnimation } from "react-type-animation";
 import DownArrow from "../components/DownArrow";
 import { Link } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import UpArrow from "./UpArrow";
 
 const Hero = () => {
+  const [showArrow, setShowArrow] = useState(false);
+
+  const handleFade = useCallback(() => {
+    if (window.scrollY !== 0) {
+      setShowArrow(false);
+    } else {
+      setShowArrow(true);
+    }
+  }, []);
+
   useEffect(() => {
-    const onScroll = () => {
+    handleFade();
+    window.addEventListener("scroll", handleFade);
+    return () => {
+      window.removeEventListener("scroll", handleFade);
+    };
+    /* const onScroll = () => {
       const scrollLink = document.getElementById("scroll-link");
 
       if (window.scrollY !== 0) {
@@ -22,8 +37,8 @@ const Hero = () => {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+    }; */
+  }, [handleFade]);
 
   return (
     // HERO
@@ -71,7 +86,9 @@ const Hero = () => {
       <Link
         id='scroll-link'
         to='#about-content'
-        className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce hidden`}>
+        className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce transition-opacity ease-in-out duration-300 ${
+          showArrow ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}>
         <DownArrow width={20} height={20} strokeWidth={2} stroke='#aaaaaa' />
       </Link>
     </div>
@@ -80,7 +97,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-/* ${
-  window.scrollY !== 0 ? "hidden" : ""
-} */
