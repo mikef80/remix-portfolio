@@ -23,9 +23,9 @@ export default function Index() {
       </header>
       <Hero />
       <main id='main' className='scroll-mt-20'>
-        {/* <Content>
+        <Content>
           <About />
-        </Content> */}
+        </Content>
       </main>
     </>
   );
