@@ -71,7 +71,8 @@ const Hero = () => {
         to='#about-content'
         className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce transition-opacity ease-in-out duration-300 ${
           showArrow ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}>
+        }`}
+        aria-label='Scroll to content'>
         <DownArrow width={20} height={20} strokeWidth={2} stroke='#aaaaaa' />
       </Link>
     </div>

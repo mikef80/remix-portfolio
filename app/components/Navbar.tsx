@@ -65,7 +65,7 @@ const Navbar = () => {
   // Define navLinks
   const navLinks = [
     { to: "/", label: "Home", hashCondition: "" },
-    { to: "/#about-content", label: "About", hashCondition: "#about-content" },
+    { to: "/#about", label: "About", hashCondition: "#about" },
     { to: "#", label: "Services", hashCondition: "#services" },
     { to: "#", label: "Contact", hashCondition: "#contact" },
   ];
@@ -92,7 +92,11 @@ const Navbar = () => {
           <Link to='/'>Mike Francis</Link>
         </div>
         <div className='block lg:hidden'>
-          <button id='menu-button' className='focus:outline-none' onClick={toggleMobileMenu}>
+          <button
+            id='menu-button'
+            className='focus:outline-none'
+            onClick={toggleMobileMenu}
+            aria-label='Toggle mobile menu'>
             <svg
               className='w-6 h-6'
               fill='none'
