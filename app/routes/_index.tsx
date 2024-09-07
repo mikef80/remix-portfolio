@@ -5,6 +5,7 @@ import Content from "~/components/Content";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
 import SkipLink from "~/components/SkipLink";
+import Tech from "~/components/Tech";
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,6 +26,7 @@ export default function Index() {
       <main id='main' className='scroll-mt-20'>
         <Content>
           <About />
+          <Tech />
         </Content>
       </main>
     </>

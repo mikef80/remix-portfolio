@@ -1,6 +1,6 @@
-const AboutMe = () => {
+const Tech = () => {
   return (
-    <div id='about' className='scroll-mt-[5.75rem] text-gray-800'>
+    <div id='about' className='scroll-mt-[5.75rem] bg-gray-800 text-white'>
       <h1 className='text-3xl pb-4'>Hi, I'm Mike!</h1>
       <p className='pb-2'>
         I'm a software developer who loves dabbling with code, learning new things and
@@ -30,4 +30,4 @@ const AboutMe = () => {
   );
 };
 
-export default AboutMe;
+export default Tech;
