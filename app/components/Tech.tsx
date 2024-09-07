@@ -1,7 +1,7 @@
 const Tech = () => {
   return (
-    <div id='about' className='scroll-mt-[5.75rem] bg-gray-800 text-white'>
-      <h1 className='text-3xl pb-4'>Hi, I'm Mike!</h1>
+    <div id='tech' className='scroll-mt-[5.75rem] bg-gray-800 text-white p-6'>
+      <h1 className='text-3xl pb-4'>Tech!</h1>
       <p className='pb-2'>
         I'm a software developer who loves dabbling with code, learning new things and
         exploring the ever-changing landscape of technology.
