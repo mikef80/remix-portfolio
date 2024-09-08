@@ -1,31 +1,101 @@
+import Content from "./Content";
+
 const Tech = () => {
+  const techs = [
+    {
+      name: "HTML",
+      filename: "html5",
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    },
+    {
+      name: "CSS",
+      filename: "css3",
+      url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    },
+    {
+      name: "JavaScript",
+      filename: "javascript",
+      url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    },
+    {
+      name: "React",
+      filename: "react",
+      url: "https://reactjs.org/",
+    },
+    {
+      name: "Redux",
+      filename: "redux",
+      url: "https://redux.js.org/",
+    },
+    {
+      name: "Node.js",
+      filename: "nodejs",
+      url: "https://nodejs.org/",
+    },
+    {
+      name: "Express",
+      filename: "express",
+      url: "https://expressjs.com/",
+    },
+    {
+      name: "PostgreSQL",
+      filename: "postgresql",
+      url: "https://www.postgresql.org/",
+    },
+    {
+      name: "Tailwind CSS",
+      filename: "tailwindcss",
+      url: "https://tailwindcss.com/",
+    },
+    {
+      name: "PHP",
+      filename: "php",
+      url: "https://www.php.net/",
+    },
+    {
+      name: "WordPress",
+      filename: "wordpress",
+      url: "https://wordpress.org/",
+    },
+    {
+      name: "React Native",
+      filename: "react",
+      url: "https://reactnative.dev/",
+    },
+    {
+      name: "Git",
+      filename: "git",
+      url: "https://git-scm.com/",
+    },
+    {
+      name: "Postman",
+      filename: "postman",
+      url: "https://www.postman.com/",
+    },
+  ];
+
   return (
     <div id='tech' className='scroll-mt-[5.75rem] bg-gray-800 text-white p-6'>
-      <h1 className='text-3xl pb-4'>Tech!</h1>
-      <p className='pb-2'>
-        I'm a software developer who loves dabbling with code, learning new things and
-        exploring the ever-changing landscape of technology.
-      </p>
-      <p className='pb-2'>
-        I've been coding for years, but only recently decided to turn it into a career, having
-        spent 16 years in the NHS as a Paramedic. My downtime on shift was often spent learning
-        to code, studying into the small hours!
-      </p>
-      <p className='pb-2'>
-        After a couple of false starts, I decided to take the plunge and completed{" "}
-        <a
-          href='https://northcoders.com/our-courses/skills-bootcamp-in-software-development'
-          target='_blank'
-          className='underline'>
-          Skills Bootcamp in Software Development
-        </a>{" "}
-        through Northcoders. It was a great opportunity to consolidate the learning I'd already
-        undertaken, whilst also filling the gaps I had in my knowledge.
-      </p>
-      <p className='pb-2'>
-        Following the bootcamp, I started work as a Junior Developer, where I am enjoying ample
-        opportunities to explore other technologies such as PHP, WordPress and React Native.
-      </p>
+      <Content>
+        <h1 className='text-3xl pb-4'>Technologies I have used</h1>
+        <div className='flex flex-wrap justify-center'>
+          {techs.map((tech) => {
+            return (
+              <div className='p-2'>
+                {/* https://devicon.dev/ */}
+                <a href={tech.url} target='blank' className='flex flex-col items-center'>
+                  <img
+                    src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.filename}/${tech.filename}-original.svg`}
+                    height='48'
+                    width='48'
+                  />
+                  <label htmlFor={tech.filename}>{tech.name}</label>
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </Content>
     </div>
   );
 };
