@@ -66,7 +66,7 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home", hashCondition: "" },
     { to: "/#about", label: "About", hashCondition: "#about" },
-    { to: "#", label: "Services", hashCondition: "#services" },
+    { to: "#tech", label: "Tech", hashCondition: "#tech" },
     { to: "#", label: "Contact", hashCondition: "#contact" },
   ];
 

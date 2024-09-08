@@ -1,7 +1,7 @@
-import About from "~/components/About";
+import AboutMe from "~/components/About";
 
 const about = () => {
-  return <About />;
+  return <AboutMe />;
 };
 
 export default about;

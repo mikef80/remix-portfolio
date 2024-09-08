@@ -40,7 +40,7 @@ const Hero = () => {
         alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
       />
 
-      <h1 className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion w-full text-center'>
+      <section className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion w-full text-center'>
         I am{" "}
         <TypeAnimation
           sequence={[
@@ -64,11 +64,11 @@ const Hero = () => {
           // style={{ color: "#FFFF00B3" }}
           style={{ color: "#00FFFFB3" }}
         />
-      </h1>
+      </section>
 
       <Link
         id='scroll-link'
-        to='#about-content'
+        to='#about'
         className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce transition-opacity ease-in-out duration-300 ${
           showArrow ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
