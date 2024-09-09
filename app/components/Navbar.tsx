@@ -66,8 +66,9 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home", hashCondition: "" },
     { to: "/#about", label: "About", hashCondition: "#about" },
-    { to: "#tech", label: "Tech", hashCondition: "#tech" },
-    { to: "#", label: "Contact", hashCondition: "#contact" },
+    { to: "/#tech", label: "Tech", hashCondition: "#tech" },
+    { to: "/#projects", label: "Projects", hashCondition: "#projects" },
+    // { to: "#", label: "Contact", hashCondition: "#contact" },
   ];
 
   const renderNavLinks = (closeMenuHandler: MouseEventHandler) => {
