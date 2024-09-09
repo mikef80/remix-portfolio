@@ -7,7 +7,7 @@ import { json } from "@remix-run/react";
 export const loader = async () => {
   const repos = await octoFetch();
 
-  return json(repos);
+  return repos;
 };
 
 const Projects = () => {
