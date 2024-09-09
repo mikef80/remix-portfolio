@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     // HERO
     <div
-      id='hero'
+      // id='hero'
       className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center `}>
       <img
         src='/media/images/groyne.jpg'
