@@ -87,13 +87,15 @@ const Tech = () => {
       uuid: "d1814109-fbf1-4a58-9d95-17c1825f6b19",
     },
   ];
-  
 
   return (
     <div id='tech' className='scroll-mt-[5rem] bg-gray-800 text-white p-6'>
       <Content>
         <h1 className='text-3xl pb-4'>Technologies</h1>
-        <p className="pb-2">This list is not exhaustive, but features most of the technologies I've used, either in a professional or educational setting.</p>
+        <p className='pb-2'>
+          This list is not exhaustive, but features most of the technologies I've used, either
+          in a professional or educational setting.
+        </p>
         <ul className='flex flex-wrap justify-center gap-2'>
           {techs.map((tech) => {
             return (
