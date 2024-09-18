@@ -1,6 +1,6 @@
 import Content from "./Content";
-import Code from "/media/icons/code.png";
-import Web from "/media/icons/world-wide-web.png";
+import { Code } from "./icons/Code";
+import { Web } from "./icons/Web";
 
 const Projects = () => {
   return (
@@ -10,12 +10,12 @@ const Projects = () => {
         <p className='pb-2'>
           A selection of projects, both from self-driven and from my bootcamp.
         </p>
-        <ul className='flex flex-wrap justify-center gap-2'>
-          <li className='p-2'>
-            <a href='' target='blank' className='flex flex-col items-center'>
+        <ul className='flex flex-wrap justify-center gap-2 w-full'>
+          <li className='p-2 lg:max-w-[49%]'>
+            <div className='flex flex-col items-center'>
               <img src='https://picsum.photos/800/450' alt='' />
-              <h2 className='text-2xl'>Project</h2>
-              <p>
+              <h2 className='text-2xl pb-2'>Project</h2>
+              <p className='pb-2'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
                 praesentium officia iusto dolorem ipsum quisquam expedita minima fugiat
                 excepturi veniam laborum, labore debitis rerum a soluta optio. Dicta deserunt
@@ -23,28 +23,17 @@ const Projects = () => {
                 voluptas rem dolores ut cumque, impedit, sint minus eaque architecto rerum?
               </p>
               <div className='flex gap-2'>
-                <img
-                  src={Code}
-                  /* style={{
-                    filter: "drop-shadow(0px 1000px 0 white)",
-                    transform: "translateY(-1000px)",
-                  }} */
-                />
-                <img
-                  src={Web}
-                  /* style={{
-                    filter: "drop-shadow(0px 1000px 0 white)",
-                    transform: "translateY(-1000px)",
-                  }} */
-                />
+                <Code colour='white' size={30} url='http://www.google.co.uk' />
+                <Web colour='white' size={30} url='http://www.google.co.uk' />
               </div>
-            </a>
+            </div>
           </li>
-          <li className='p-2'>
-            <a href='' target='blank' className='flex flex-col items-center'>
+
+          <li className='p-2  lg:max-w-[49%]'>
+            <div className='flex flex-col items-center'>
               <img src='https://picsum.photos/800/450' alt='' />
-              <h2 className='text-2xl'>Project</h2>
-              <p>
+              <h2 className='text-2xl pb-2'>Project</h2>
+              <p className='pb-2'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
                 praesentium officia iusto dolorem ipsum quisquam expedita minima fugiat
                 excepturi veniam laborum, labore debitis rerum a soluta optio. Dicta deserunt
@@ -52,22 +41,10 @@ const Projects = () => {
                 voluptas rem dolores ut cumque, impedit, sint minus eaque architecto rerum?
               </p>
               <div className='flex gap-2'>
-                <img
-                  src={Code}
-                  /* style={{
-                    filter: "drop-shadow(0px 1000px 0 white)",
-                    transform: "translateY(-1000px)",
-                  }} */
-                />
-                <img
-                  src={Web}
-                  /* style={{
-                    filter: "drop-shadow(0px 1000px 0 white)",
-                    transform: "translateY(-1000px)",
-                  }} */
-                />
+                <Code colour='white' size={30} url='http://www.google.co.uk' />
+                <Web colour='white' size={30} url='http://www.google.co.uk' />
               </div>
-            </a>
+            </div>
           </li>
         </ul>
       </Content>
