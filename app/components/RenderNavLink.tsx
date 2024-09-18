@@ -2,23 +2,26 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "@remix-run/react";
 import { MouseEventHandler } from "react";
 
-const RenderNavLink = ({
+interface RenderNavLinkProps {
+  to: string;
+  label: string;
+  hashCondition: string;
+  closeMobileMenu: MouseEventHandler<HTMLAnchorElement>;
+}
+
+const RenderNavLink: React.FC<RenderNavLinkProps> = ({
   to = "/",
   label = "",
   hashCondition = "",
   closeMobileMenu,
-}: {
-  to: string;
-  label: string;
-  hashCondition: string;
-  closeMobileMenu: MouseEventHandler;
 }) => {
   const location = useLocation();
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setIsActive(location.pathname === to && location.hash === hashCondition);
-  }, [location, to, hashCondition]);
+    // Ensure active state is based on both pathname and hash
+    setIsActive(location.hash === hashCondition);
+  }, [location, hashCondition]);
 
   const activeLinkStyle = "underline underline-offset-4";
   const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
@@ -27,8 +30,7 @@ const RenderNavLink = ({
     <NavLink
       to={to}
       onClick={closeMobileMenu}
-      className={`${linkStyles} ${isActive ? activeLinkStyle : ""}`}
-    >
+      className={`${linkStyles} ${isActive ? activeLinkStyle : ""}`}>
       {label}
     </NavLink>
   );
