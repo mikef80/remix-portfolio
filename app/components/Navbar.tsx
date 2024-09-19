@@ -1,9 +1,11 @@
 import { Link } from "@remix-run/react";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import RenderNavLink from "./RenderNavLink";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const targetRef = useRef(null);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu((prev) => !prev);
@@ -27,6 +29,35 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  // Add scroll anchor position watcher
+  useEffect(() => {
+    const handleElementObservation = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log(`Element ${entry.target.id} is in view!`);
+              // Do something with the current visible element's ID
+              window.location.hash = entry.target.id;
+
+              if (window.scrollY === 0) {
+                window.location.hash = "";
+              }
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+
+      // Observe all elements you want to track
+      document.querySelectorAll(".track").forEach((el) => {
+        observer.observe(el);
+      });
+    };
+
+    handleElementObservation();
   }, []);
 
   // Add scroll event listeners

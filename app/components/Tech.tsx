@@ -76,7 +76,7 @@ const techs = [
 
 const Tech = () => {
   return (
-    <div id='tech' className='scroll-mt-[5rem] bg-gray-800 text-white p-6'>
+    <div id='tech' className='scroll-mt-[5rem] bg-gray-800 text-white p-6 track'>
       <Content>
         <h1 className='text-3xl pb-4'>Technologies</h1>
         <p className='pb-2'>

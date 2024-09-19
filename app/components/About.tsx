@@ -2,7 +2,7 @@ import Content from "./Content";
 
 const AboutMe = () => {
   return (
-    <div id='about' className='scroll-mt-[5rem] text-gray-800 p-6'>
+    <div id='about' className='scroll-mt-[5rem] text-gray-800 p-6 track'>
       <Content>
         <h1 className='text-3xl pb-4'>Hi, I'm Mike!</h1>
         <p className='pb-2'>
