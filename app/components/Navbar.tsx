@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { MouseEventHandler, useEffect, useState } from "react";
 import RenderNavLink from "./RenderNavLink";
 
