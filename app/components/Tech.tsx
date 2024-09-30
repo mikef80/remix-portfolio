@@ -83,7 +83,9 @@ const Tech = () => {
           This list is not exhaustive, but features most of the technologies I've used, either
           in a professional or educational setting.
         </p>
-        <ul className='flex flex-wrap justify-center gap-2'>
+        {/* <ul className='flex flex-wrap justify-center gap-2'> */}
+        <ul className='grid grid-cols-3 md:grid-cols-7'>
+        
           {techs.map((tech) => (
             <li className='p-2' key={tech.uuid}>
               <a href={tech.url} target='blank' className='flex flex-col items-center'>
