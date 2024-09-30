@@ -1,41 +1,36 @@
 import type { MetaFunction } from "@remix-run/node";
+import About from "~/components/About";
+import BackToTop from "~/components/BackToTop";
+import Content from "~/components/Content";
+import Hero from "~/components/Hero";
+import Navbar from "~/components/Navbar";
+import Projects from "~/components/Projects";
+import SkipLink from "~/components/SkipLink";
+import Tech from "~/components/Tech";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Mike Francis - Portfolio" },
+    { name: "description", content: "Welcome to my Portfolio!" },
   ];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <header>
+        <SkipLink />
+        <BackToTop />
+        <Navbar />
+      </header>
+      <Hero />
+      <main id='main' className='scroll-mt-20'>
+        {/* <Content> */}
+        <About />
+        <Tech />
+        <Projects />
+        {/* </Content> */}
+      </main>
+    </>
   );
 }
