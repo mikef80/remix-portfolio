@@ -3,7 +3,7 @@
 // Solar Linear Icons Collection
 
 export const Web = ({ colour, size, url }: { colour: string; size: number; url: string }) => (
-  <a href={url}>
+  <a href={url} target="_blank">
     <svg
       width={size}
       height={size}
