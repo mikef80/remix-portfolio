@@ -19,19 +19,19 @@ const Projects = ({ projects }: { projects: Project[] }) => {
         <ul className="flex flex-wrap justify-center gap-2 w-full">
           {portfolioProjects.map((project, index) => (
             <li key={index} className="p-2 lg:max-w-[49%]">
-              <Link to="">
-                <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center">
+                <Link to={`/projects/${project.name}`}>
                   <img src="https://picsum.photos/800/450" alt="" />
                   <h2 className="text-2xl pb-2">{project.name}</h2>
-                  <p className="pb-2">{project.description}</p>
-                  <div className="flex gap-2">
-                    <Code colour="white" size={30} url={project.url} />
-                    {project.homepage && (
-                      <Web colour="white" size={30} url={project.homepage} />
-                    )}
-                  </div>
+                </Link>
+                <p className="pb-2">{project.description}</p>
+                <div className="flex gap-2">
+                  <Code colour="white" size={30} url={project.url} />
+                  {project.homepage && (
+                    <Web colour="white" size={30} url={project.homepage} />
+                  )}
                 </div>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
