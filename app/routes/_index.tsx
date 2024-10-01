@@ -29,9 +29,6 @@ export type Project = {
 
 // Loader function
 export const loader = async () => {
-  /* const response: Project[] = await octoFetch();
-  console.log(response); */
-
   const response: Project[] = [
     {
       id: 816973734,
