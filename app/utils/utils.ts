@@ -13,25 +13,34 @@ export const octoFetch = async () => {
     q: "user:mikef80+topic:portfolio-project",
     sort: "updated",
     order: "desc",
-  });    
+  });
 
   const mappedArray = await Promise.all(
-    items.map(async ({ id, name, description, html_url: url, homepage, updated_at }) => {
-      const { data: languages } = await octokit.rest.repos.listLanguages({
-        owner: "mikef80",
-        repo: name,
-      });
+    items.map(
+      async ({
+        id,
+        name,
+        description,
+        html_url: url,
+        homepage,
+        updated_at,
+      }) => {
+        const { data: languages } = await octokit.rest.repos.listLanguages({
+          owner: "mikef80",
+          repo: name,
+        });
 
-      let langCount = 0;
+        let langCount = 0;
 
-      for (let key in languages) {
-        langCount += languages[key];
+        for (let key in languages) {
+          langCount += languages[key];
+        }
+
+        languages.total = langCount;
+
+        return { id, name, description, url, homepage, languages, updated_at };
       }
-
-      languages.total = langCount;
-
-      return { id, name, description, url, homepage, languages, updated_at };
-    })
+    )
   );
 
   return mappedArray;
