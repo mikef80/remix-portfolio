@@ -25,10 +25,11 @@ const Hero = () => {
   return (
     // HERO
     <div
-      id='hero'
-      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center `}>
+      id="hero"
+      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center `}
+    >
       <img
-        src='/media/images/groyne.jpg'
+        src="/media/images/groyne.webp"
         // can't decide whether i want the fade in here or not
         className={`object-cover h-full w-full
           ${
@@ -36,11 +37,11 @@ const Hero = () => {
             "[mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_99%,rgba(0,0,0,0)_100%)]"
           }
         `}
-        id='hero-img'
-        alt='High contrast black and white image of boscombe pier, taken on a long exposure.'
+        id="hero-img"
+        alt="High contrast black and white image of boscombe pier, taken on a long exposure."
       />
 
-      <section className='text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion w-full text-center'>
+      <section className="text-6xl text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-exclusion w-full text-center">
         I am{" "}
         <TypeAnimation
           sequence={[
@@ -57,7 +58,7 @@ const Hero = () => {
             "ambitious",
             2000,
           ]}
-          wrapper='span'
+          wrapper="span"
           speed={10}
           deletionSpeed={20}
           repeat={Infinity}
@@ -67,13 +68,16 @@ const Hero = () => {
       </section>
 
       <Link
-        id='scroll-link'
-        to='#about'
+        id="scroll-link"
+        to="#about"
         className={`text-xl text-gray-100 absolute bottom-1 left-1/2 -translate-x-1/2 animate-bounce transition-opacity ease-in-out duration-300 ${
-          showArrow ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          showArrow
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
-        aria-label='Scroll to content'>
-        <DownArrow width={20} height={20} strokeWidth={2} stroke='#aaaaaa' />
+        aria-label="Scroll to content"
+      >
+        <DownArrow width={20} height={20} strokeWidth={2} stroke="#aaaaaa" />
       </Link>
     </div>
     // END HERO
