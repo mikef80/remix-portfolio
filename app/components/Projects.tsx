@@ -21,7 +21,11 @@ const Projects = ({ projects }: { projects: Project[] }) => {
             <li key={index} className="p-2 lg:max-w-[49%]">
               <div className="flex flex-col items-center">
                 <Link to={`/projects/${project.name}`}>
-                  {/* <img src="https://picsum.photos/800/450" alt="" /> */}
+                  {/* <img
+                    src="https://picsum.photos/800/450"
+                    alt=""
+                    loading="lazy"
+                  /> */}
                   <h2 className="text-2xl pb-2">{project.name}</h2>
                 </Link>
                 <p className="pb-2">{project.description}</p>

@@ -95,6 +95,7 @@ const Tech = () => {
                   width='48'
                   alt={tech.name}
                   className='hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]'
+                  loading="lazy"
                 />
                 <label htmlFor={tech.filename}>{tech.name}</label>
               </a>
