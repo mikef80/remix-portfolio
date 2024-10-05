@@ -29,7 +29,7 @@ export type Project = {
 
 // Loader function
 export const loader = async () => {
-  const response: Project[] = [
+  /* const response: Project[] = [
     {
       id: 816973734,
       name: "remix-portfolio",
@@ -90,6 +90,12 @@ export const loader = async () => {
       updated_at: "2024-05-16T20:26:56Z",
     },
   ];
+
+  return { projects: response }; */
+
+  const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
+
+  const response = await octoFetch(ghtoken);
 
   return { projects: response };
 };

@@ -1,10 +1,10 @@
 import { Octokit } from "@octokit/core";
 import { restEndpointMethods } from "@octokit/plugin-rest-endpoint-methods";
 
-export const octoFetch = async () => {
+export const octoFetch = async (githubtoken: string | undefined) => {
   const MyOctokit = Octokit.plugin(restEndpointMethods);
   const octokit = new MyOctokit({
-    auth: import.meta.env.REACT_APP_GITHUBTOKEN,
+    auth: githubtoken,
   });
 
   const {
