@@ -68,7 +68,7 @@ const Navbar = () => {
     { to: "/#about", label: "About", hashCondition: "#about" },
     { to: "/#tech", label: "Tech", hashCondition: "#tech" },
     { to: "/#projects", label: "Projects", hashCondition: "#projects" },
-    { to: "#", label: "Contact", hashCondition: "#contact" },
+    { to: "/#contact-me", label: "Contact", hashCondition: "#contact-me" },
   ];
 
   const renderNavLinks = (closeMenuHandler: MouseEventHandler) => {
