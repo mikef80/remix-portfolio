@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
+import Contact from "~/components/Contact";
 import Content from "~/components/Content";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
@@ -29,7 +30,7 @@ export type Project = {
 
 // Loader function
 export const loader = async () => {
-  /* const response: Project[] = [
+  const response: Project[] = [
     {
       id: 816973734,
       name: "remix-portfolio",
@@ -91,13 +92,36 @@ export const loader = async () => {
     },
   ];
 
-  return { projects: response }; */
+  return { projects: response };
 
-  const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
+  /* const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
 
   const response = await octoFetch(ghtoken);
 
-  return { projects: response };
+  return { projects: response }; */
+};
+
+export const action = async ({ request }: { request: Request }) => {
+  const formData = await request.formData();
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const message = formData.get("message");
+
+  if (!name || !email || !message) {
+    return { error: "All fields are required" };
+  }
+
+  console.log("Name: ", name);
+  console.log("Email: ", email);
+  console.log("Message: ", message);
+
+  try {
+    return { success: "Your message was submitted" };
+  } catch (error) {
+    return {
+      error: "There was an error submitting your message. Please try again.",
+    };
+  }
 };
 
 export default function Index() {
@@ -116,6 +140,7 @@ export default function Index() {
         <About />
         <Tech />
         <Projects projects={projects} />
+        <Contact />
         {/* </Content> */}
       </main>
     </>
