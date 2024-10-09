@@ -1,27 +1,25 @@
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import Content from "./Content";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
-/* export const action = async ({ request }: { request: Request }) => {
-  const formData = await request.formData();
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const message = formData.get("message");
-
-  if (!name || !email || !message) {
-    return { error: "All fields are required" };
-  }
-
-  console.log("Name: ", name);
-  console.log("Email: ", email);
-  console.log("Message: ", message);
-}; */
+type ActionData = {
+  error?: string;
+  success?: string;
+  ok?: boolean;
+};
 
 const Contact = () => {
   const navigation = useNavigation();
+  const formRef = useRef<HTMLFormElement>(null);
   const isSubmitting = navigation.state === "submitting";
 
-  const actionData = useActionData();
+  const actionData = useActionData<ActionData>();
+
+  useEffect(() => {
+    if (actionData?.ok) {
+      formRef.current?.reset()
+    }
+  }, [actionData]);
 
   return (
     <div
@@ -39,13 +37,19 @@ const Contact = () => {
         {actionData?.success && (
           <p className="text-green-500">{actionData.success}</p>
         )}
-        <Form method="post" className="flex flex-col gap-2 w-1/3 items-end">
+        <Form
+          ref={formRef}
+          method="post"
+          className="flex flex-col gap-2 w-1/3 items-center"
+        >
           <div className="gap-2 flex items-center">
             <label htmlFor="name">Name</label>
             <input
               type="text"
               name="name"
+              id="name"
               className="text-gray-800 p-1 rounded"
+              autoComplete="name"
               required
             />
           </div>
@@ -54,7 +58,9 @@ const Contact = () => {
             <input
               type="email"
               name="email"
+              id="email"
               className="text-gray-800 p-1 rounded"
+              autoComplete="email"
               required
             />
           </div>
@@ -62,6 +68,7 @@ const Contact = () => {
             <label htmlFor="message">Message</label>
             <textarea
               name="message"
+              id="message"
               rows={5}
               className="text-gray-800 p-1 rounded"
               required

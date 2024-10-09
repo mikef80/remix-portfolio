@@ -76,28 +76,29 @@ const techs = [
 
 const Tech = () => {
   return (
-    <div id='tech' className='scroll-mt-[5rem] bg-gray-800 text-white p-6'>
+    <div id="tech" className="scroll-mt-[5rem] bg-gray-800 text-white p-6">
       <Content>
-        <h1 className='text-3xl pb-4'>Technologies</h1>
-        <p className='pb-2'>
-          This list is not exhaustive, but features most of the technologies I've used, either
-          in a professional or educational setting.
+        <h1 className="text-3xl pb-4">Technologies</h1>
+        <p className="pb-2">
+          This list is not exhaustive, but features most of the technologies
+          I've used, either in a professional or educational setting.
         </p>
         {/* <ul className='flex flex-wrap justify-center gap-2'> */}
-        <ul className='grid grid-cols-3 md:grid-cols-7'>
-        
+        <ul className="grid grid-cols-3 md:grid-cols-7">
           {techs.map((tech) => (
-            <li className='p-2' key={tech.uuid}>
-              <a href={tech.url} target='blank' className='flex flex-col items-center'>
-                <img
-                  src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.filename}/${tech.filename}-original.svg`}
-                  height='48'
-                  width='48'
-                  alt={tech.name}
-                  className='hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]'
-                  loading="lazy"
-                />
-                <label htmlFor={tech.filename}>{tech.name}</label>
+            <li className="p-2" key={tech.uuid}>
+              <a href={tech.url} target="blank">
+                <figure className="flex flex-col items-center">
+                  <img
+                    src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.filename}/${tech.filename}-original.svg`}
+                    height="48"
+                    width="48"
+                    alt={tech.name}
+                    className="hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]"
+                    loading="lazy"
+                  />
+                  <figcaption>{tech.name}</figcaption>
+                </figure>
               </a>
             </li>
           ))}
