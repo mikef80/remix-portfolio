@@ -1,5 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
+import { useActionData, useLoaderData } from "@remix-run/react";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
 import Contact from "~/components/Contact";
@@ -101,7 +101,7 @@ export const loader = async () => {
   return { projects: response }; */
 };
 
-export const action = async ({ request }: { request: Request }) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const name = formData.get("name");
   const email = formData.get("email");
@@ -116,10 +116,11 @@ export const action = async ({ request }: { request: Request }) => {
   console.log("Message: ", message);
 
   try {
-    return { success: "Your message was submitted" };
+    return { success: "Your message was submitted", ok: true };
   } catch (error) {
     return {
       error: "There was an error submitting your message. Please try again.",
+      ok: false,
     };
   }
 };
