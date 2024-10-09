@@ -29,7 +29,7 @@ const Contact = () => {
       <Content>
         <h1 className="text-3xl pb-4">Contact Me</h1>
         <p className="pb-2">
-          If you like to get in touch, please feel free to send me a message.
+          If you like to get in touch, please feel free to send me a message!
         </p>
         {actionData?.error && (
           <p className="text-red-500">{actionData.error}</p>
