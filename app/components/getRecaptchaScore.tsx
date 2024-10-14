@@ -36,6 +36,8 @@ export async function getRecaptchaScore(
 
     return true;
   } else {
+    console.log('recaptcha failure');
+    
     // If verification fails, return an error message
     return false;
   }
