@@ -1,9 +1,10 @@
 import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useActionData, useLoaderData } from "@remix-run/react";
+import { json, redirect, useActionData, useLoaderData } from "@remix-run/react";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
 import Contact from "~/components/Contact";
 import Content from "~/components/Content";
+import { getRecaptchaScore } from "~/components/getRecaptchaScore";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
 import Projects from "~/components/Projects";
@@ -111,18 +112,39 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return { error: "All fields are required" };
   }
 
+  // form validation logic here
+
+  const token = formData.get("_captcha") as string;
+  const key = process.env.RECAPTCHA_SECRET_KEY as string;
+
+  // validate captcha util function
+  const recaptchaResult = await getRecaptchaScore(token, key);
+  console.log(recaptchaResult); // result of our recaptcha validation
+
   console.log("Name: ", name);
   console.log("Email: ", email);
   console.log("Message: ", message);
 
-  try {
+  if (!recaptchaResult) {
+    // your contact form submission code here
+    // return redirect("/thank-you");
+    return { success: "Your message was submitted", ok: true };
+  }
+
+  // return json({ message: "You are a robot!" });
+  return {
+    error: "There was an error submitting your message. Please try again.",
+    ok: false,
+  };
+
+  /* try {
     return { success: "Your message was submitted", ok: true };
   } catch (error) {
     return {
       error: "There was an error submitting your message. Please try again.",
       ok: false,
     };
-  }
+  } */
 };
 
 export default function Index() {
