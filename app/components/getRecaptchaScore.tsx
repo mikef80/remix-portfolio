@@ -1,4 +1,7 @@
-export async function getRecaptchaScore(token: string, key: string): Promise<boolean> {
+export async function getRecaptchaScore(
+  token: string,
+  key: string
+): Promise<boolean> {
   let res;
   const captchData = new URLSearchParams({
     secret: key,
@@ -27,6 +30,10 @@ export async function getRecaptchaScore(token: string, key: string): Promise<boo
   // Checking the result of the reCAPTCHA verification
   if (res && res.success && res.score > 0.5) {
     // If verification is successful, continue with form submission
+    console.log(
+      `res: ${res}, res.success: ${res.success}, res.score: ${res.score}`
+    );
+
     return true;
   } else {
     // If verification fails, return an error message
