@@ -1,6 +1,7 @@
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import Content from "./Content";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type ActionData = {
   error?: string;
@@ -9,6 +10,26 @@ type ActionData = {
 };
 
 const Contact = () => {
+  // Token state
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  // custom hook from reCaptcha library
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const token = await executeRecaptcha("yourAction");
+    setCaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  // useEffect that will execute out token setting callback function
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
+
   const navigation = useNavigation();
   const formRef = useRef<HTMLFormElement>(null);
   const isSubmitting = navigation.state === "submitting";
@@ -17,7 +38,7 @@ const Contact = () => {
 
   useEffect(() => {
     if (actionData?.ok) {
-      formRef.current?.reset()
+      formRef.current?.reset();
     }
   }, [actionData]);
 
@@ -42,6 +63,9 @@ const Contact = () => {
           method="post"
           className="flex flex-col gap-2 w-1/3 items-center"
         >
+          {captchaToken ? (
+            <input type="hidden" name="_captcha" value={captchaToken}></input>
+          ) : null}
           <div className="gap-2 flex items-center">
             <label htmlFor="name">Name</label>
             <input
@@ -86,6 +110,7 @@ const Contact = () => {
               type="submit"
               className="bg-blue-400 px-3 py-1 rounded hover:bg-blue-500 disabled:bg-blue-300"
               disabled={isSubmitting}
+              onSubmit={() => handleReCaptchaVerify}
             >
               Submit
             </button>
