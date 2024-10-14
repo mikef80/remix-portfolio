@@ -111,6 +111,7 @@ const Contact = () => {
               className="bg-blue-400 px-3 py-1 rounded hover:bg-blue-500 disabled:bg-blue-300"
               disabled={isSubmitting}
               onSubmit={() => handleReCaptchaVerify}
+              
             >
               Submit
             </button>
