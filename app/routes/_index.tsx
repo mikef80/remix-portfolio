@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useActionData, useLoaderData } from "@remix-run/react";
+import { json, redirect, useActionData, useLoaderData } from "@remix-run/react";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
 import Contact from "~/components/Contact";
@@ -9,6 +9,7 @@ import Navbar from "~/components/Navbar";
 import Projects from "~/components/Projects";
 import SkipLink from "~/components/SkipLink";
 import Tech from "~/components/Tech";
+import { sendEmail } from "~/utils/nodemailer";
 import { octoFetch } from "~/utils/utils";
 
 export const meta: MetaFunction = () => {
@@ -111,17 +112,24 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return { error: "All fields are required" };
   }
 
-  console.log("Name: ", name);
-  console.log("Email: ", email);
-  console.log("Message: ", message);
+  console.log(`Message from ${name} (${email}): ${message}`);
 
   try {
+    await sendEmail({
+      to: "mike@mike-francis.org",
+      subject: `New contact form submission from ${name}`,
+      text: `Message from ${name} (${email}): ${message}`,
+      html: `<p>Message from ${name} (${email}):</p><p>${message}</p>`,
+    });
+    // return redirect("/");
     return { success: "Your message was submitted", ok: true };
   } catch (error) {
-    return {
+    console.error("Error sending email:", error);
+    return json({
       error: "There was an error submitting your message. Please try again.",
       ok: false,
-    };
+      status: 500,
+    });
   }
 };
 
