@@ -3,12 +3,12 @@ import nodemailer from "nodemailer";
 
 // Configure the SMTP transport
 const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  host: process.env.SMTP_HOST,
   port: 587,
-  secure: false,
+  secure:  false,
   auth: {
-    user: "ashley.haag@ethereal.email",
-    pass: "KKtRxCf5BghMDnxme8",
+    user: 'ashley.haag@ethereal.email',
+    pass: 'KKtRxCf5BghMDnxme8',
   },
 });
 

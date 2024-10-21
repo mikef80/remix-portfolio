@@ -93,13 +93,11 @@ export const loader = async () => {
     },
   ];
 
-  return { projects: response };
-
   /* const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
 
-  const response = await octoFetch(ghtoken);
+  const response = await octoFetch(ghtoken); */
 
-  return { projects: response }; */
+  return { projects: response };
 };
 
 export const action = async ({ request }: ActionFunctionArgs) => {

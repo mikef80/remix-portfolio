@@ -43,5 +43,8 @@ export const octoFetch = async (githubtoken: string | undefined) => {
     )
   );
 
+  console.log('octofetch ran');
+  
+
   return mappedArray;
 };
