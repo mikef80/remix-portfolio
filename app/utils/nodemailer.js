@@ -4,11 +4,11 @@ import nodemailer from "nodemailer";
 // Configure the SMTP transport
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: 587,
-  secure:  false,
+  port: process.env.SMTP_PORT,
+  secure:  process.env.SMTP_SECURE === 'true',
   auth: {
-    user: 'ashley.haag@ethereal.email',
-    pass: 'KKtRxCf5BghMDnxme8',
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
   },
 });
 

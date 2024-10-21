@@ -110,8 +110,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return { error: "All fields are required" };
   }
 
-  console.log(`Message from ${name} (${email}): ${message}`);
-
   try {
     await sendEmail({
       to: "mike@mike-francis.org",
