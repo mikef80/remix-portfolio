@@ -43,7 +43,7 @@ const techs = [
     url: "https://www.postgresql.org/",
   },
   {
-    name: "Tailwind CSS",
+    name: "Tailwind ",
     filename: "tailwindcss",
     url: "https://tailwindcss.com/",
   },
@@ -71,30 +71,33 @@ const techs = [
     name: "Postman",
     filename: "postman",
     url: "https://www.postman.com/",
-  },
+  }
 ].map((tech) => ({ ...tech, uuid: uuidv4() }));
 
 const Tech = () => {
   return (
-    <div id='tech' className='scroll-mt-[5rem] bg-gray-800 text-white p-6'>
+    <div id="tech" className="scroll-mt-[5rem] bg-gray-800 text-white p-6">
       <Content>
-        <h1 className='text-3xl pb-4'>Technologies</h1>
-        <p className='pb-2'>
-          This list is not exhaustive, but features most of the technologies I've used, either
-          in a professional or educational setting.
+        <h1 className="text-3xl pb-4">Technologies</h1>
+        <p className="pb-2">
+          This list is not exhaustive, but features most of the technologies
+          I've used, either in a professional or educational setting.
         </p>
         {/* <ul className='flex flex-wrap justify-center gap-2'> */}
-        <ul className='grid grid-cols-3 md:grid-cols-7'>
-        
+        <ul className="flex flex-wrap">
           {techs.map((tech) => (
-            <li className='p-2' key={tech.uuid}>
-              <a href={tech.url} target='_blank' className='flex flex-col items-center'>
+            <li className="p-2 flex-3-col md:flex-7-col" key={tech.uuid}>
+              <a
+                href={tech.url}
+                target="_blank"
+                className="flex flex-col items-center"
+              >
                 <img
                   src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.filename}/${tech.filename}-original.svg`}
-                  height='48'
-                  width='48'
+                  height="48"
+                  width="48"
                   alt={tech.name}
-                  className='hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]'
+                  className="hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]"
                   loading="lazy"
                 />
                 <div>{tech.name}</div>
