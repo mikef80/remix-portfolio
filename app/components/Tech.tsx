@@ -88,7 +88,7 @@ const Tech = () => {
         
           {techs.map((tech) => (
             <li className='p-2' key={tech.uuid}>
-              <a href={tech.url} target='blank' className='flex flex-col items-center'>
+              <a href={tech.url} target='_blank' className='flex flex-col items-center'>
                 <img
                   src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.filename}/${tech.filename}-original.svg`}
                   height='48'
@@ -97,7 +97,7 @@ const Tech = () => {
                   className='hover:drop-shadow-[2px_2px_20px_theme(colors.blue.500)] transition-all duration-[300ms]'
                   loading="lazy"
                 />
-                <label htmlFor={tech.filename}>{tech.name}</label>
+                <div>{tech.name}</div>
               </a>
             </li>
           ))}

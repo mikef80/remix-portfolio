@@ -1,8 +1,10 @@
 import Content from "./Content";
+import Socials from "./Socials";
 
 const AboutMe = () => {
   return (
-    <div id='about' className='scroll-mt-[5rem] text-gray-800 p-6'>
+    <div id='about' className='scroll-mt-[5rem] text-gray-800 px-6 pb-6 pt-4 md:p-6 md:pt-4'>
+      <Socials/>
       <Content>
         <h1 className='text-3xl pb-4'>Hi, I'm Mike!</h1>
         <p className='pb-2'>
