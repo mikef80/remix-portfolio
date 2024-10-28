@@ -16,9 +16,9 @@ const Projects = ({ projects }: { projects: Project[] }) => {
         <p className="pb-2">
           A selection of projects, both from self-driven and from my bootcamp.
         </p>
-        <ul className="flex flex-wrap justify-center gap-2 w-full">
+        <ul className="flex flex-wrap">
           {portfolioProjects.map((project, index) => (
-            <li key={index} className="p-2 lg:max-w-[49%]">
+            <li key={index} className="p-3 flex-1-col md:flex-2-col">
               <div className="flex flex-col items-center">
                 <Link to={`/projects/${project.name}`}>
                   {/* <img
