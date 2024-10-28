@@ -17,7 +17,7 @@ const AboutMe = () => {
           learning to code, studying into the small hours!
         </p>
         <p className='pb-2'>
-          After a couple of false starts, I decided to take the plunge and completed{" "}
+          After a couple of false starts, I decided to take the plunge and completed a{" "}
           <a
             href='https://northcoders.com/our-courses/skills-bootcamp-in-software-development'
             target='_blank'
