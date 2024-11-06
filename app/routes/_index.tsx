@@ -5,7 +5,7 @@ import BackToTop from "~/components/BackToTop";
 import Content from "~/components/Content";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
-import Projects from "~/components/Projects";
+import GitHubPortfolio from "~/components/GitHubPortfolio";
 import SkipLink from "~/components/SkipLink";
 import Socials from "~/components/Socials";
 import Tech from "~/components/Tech";
@@ -30,7 +30,7 @@ export type Project = {
 
 // Loader function
 export const loader = async () => {
-  const response: Project[] = [
+  /* const response: Project[] = [
     {
       id: 816973734,
       name: "remix-portfolio",
@@ -90,13 +90,11 @@ export const loader = async () => {
       languages: { JavaScript: 22907, HTML: 743, CSS: 58, total: 23708 },
       updated_at: "2024-05-16T20:26:56Z",
     },
-  ];
+  ]; */
 
-  return { projects: response };
+  const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
 
-  /* const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
-
-  const response = await octoFetch(ghtoken); */
+  const response = await octoFetch(ghtoken);
 
   return { projects: response };
 };
@@ -116,7 +114,7 @@ export default function Index() {
         {/* <Content> */}
         <About />
         <Tech />
-        <Projects projects={projects} />
+        <GitHubPortfolio projects={projects} />
         {/* </Content> */}
       </main>
     </>

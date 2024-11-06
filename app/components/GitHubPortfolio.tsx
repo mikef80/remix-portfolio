@@ -6,15 +6,15 @@ import { Project } from "~/routes/_index";
 import { Link } from "@remix-run/react";
 
 // Component
-const Projects = ({ projects }: { projects: Project[] }) => {
+const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
   const [portfolioProjects] = useState(projects);
 
   return (
     <div id="projects" className="scroll-mt-[5rem] bg-gray-800 text-white p-6">
       <Content>
-        <h1 className="text-3xl pb-4">Projects</h1>
+        <h1 className="text-3xl pb-4">GitHub Portfolio</h1>
         <p className="pb-2">
-          A selection of projects, both from self-driven and from my bootcamp.
+          A selection of projects, both from my bootcamp and personal projects.
         </p>
         <ul className="flex flex-wrap">
           {portfolioProjects.map((project, index) => (
@@ -44,4 +44,4 @@ const Projects = ({ projects }: { projects: Project[] }) => {
   );
 };
 
-export default Projects;
+export default GitHubPortfolio;
