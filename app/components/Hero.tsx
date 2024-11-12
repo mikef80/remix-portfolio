@@ -26,7 +26,7 @@ const Hero = () => {
     // HERO
     <div
       id="hero"
-      className={`relative top-0 left-0 h-[calc(100vh-80px)] flex flex-col items-center `}
+      className={`relative top-0 left-0 h-screen flex flex-col items-center `}
     >
       <img
         src="/media/images/groyne.webp"

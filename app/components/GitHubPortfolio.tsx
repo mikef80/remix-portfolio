@@ -10,7 +10,7 @@ const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
   const [portfolioProjects] = useState(projects);
 
   return (
-    <div id="projects" className="scroll-mt-[5rem] bg-gray-800 text-white p-6">
+    <div id="projects" className="scroll-mt-[5rem] text-gray-800 bg-white p-6">
       <Content>
         <h1 className="text-3xl pb-4">GitHub Portfolio</h1>
         <p className="pb-2">
