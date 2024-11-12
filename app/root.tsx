@@ -21,7 +21,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className={`font-raleway relative top-[80px]`}>
+      <body className={`font-raleway`}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
