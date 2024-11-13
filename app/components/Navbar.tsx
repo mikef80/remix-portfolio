@@ -41,16 +41,12 @@ const Navbar = () => {
       const isMenuVisible = !navLinksMob.classList.contains("hidden");
 
       if (!isScrolled && isMenuVisible) {
-        menuBar.classList.add("shadow-lg", "bg-white", "text-gray-800");
-        menuBar.classList.remove("bg-gray-800", "text-white");
+        menuBar.classList.add("shadow-lg", "text-gray-800");
+        menuBar.classList.remove("bg-white", "text-white");
       } else if (!isScrolled) {
         menuBar.classList.remove("shadow-lg", "bg-white");
-        /* menuBar.classList.add("bg-white", "text-gray-800");
-        menuBar.classList.remove("shadow-lg", "bg-gray-800", "text-white"); */
       } else {
-        menuBar.classList.add('bg-white','text-gray-800')
-        /* menuBar.classList.add("shadow-lg", "bg-gray-800", "text-white");
-        menuBar.classList.remove("bg-white", "text-gray-800"); */
+        menuBar.classList.add("bg-white", "text-gray-800", "shadow-lg");
       }
     };
 
@@ -88,7 +84,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="px-4 z-10 fixed w-full top-0 left-0 transition ease-in-out duration-300"
+      className="px-4 z-10 fixed w-full top-0 left-0 transition ease-in-out duration-300 text-gray-800"
       id="navbar"
     >
       <div className="container h-20 mx-auto flex justify-between items-center">
