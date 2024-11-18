@@ -30,9 +30,9 @@ const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
                 </Link>
                 <p className="pb-2">{project.description}</p>
                 <div className="flex gap-2">
-                  <Code colour="white" size={30} url={project.url} />
+                  <Code colour="#1f2937" size={30} url={project.url} />
                   {project.homepage && (
-                    <Web colour="white" size={30} url={project.homepage} />
+                    <Web colour="#1f2937" size={30} url={project.homepage} />
                   )}
                 </div>
               </div>
