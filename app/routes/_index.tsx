@@ -7,7 +7,7 @@ import Navbar from "~/components/Navbar";
 import GitHubPortfolio from "~/components/GitHubPortfolio";
 import SkipLink from "~/components/SkipLink";
 import Tech from "~/components/Tech";
-import { getDataSource } from "./dataSource.server";
+import { getDataSource } from "../utils/dataSource.server";
 
 export const meta: MetaFunction = () => {
   return [
