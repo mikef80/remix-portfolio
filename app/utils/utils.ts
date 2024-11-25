@@ -7,41 +7,54 @@ export const octoFetch = async (githubtoken: string | undefined) => {
     auth: githubtoken,
   });
 
-  const {
-    data: { items },
-  } = await octokit.rest.search.repos({
-    q: "user:mikef80+topic:portfolio-project",
-    sort: "updated",
-    order: "desc",
-  });
+  try {
+    const {
+      data: { items },
+    } = await octokit.rest.search.repos({
+      q: "user:mikef80+topic:portfolio-project",
+      sort: "updated",
+      order: "desc",
+    });
 
-  const mappedArray = await Promise.all(
-    items.map(
-      async ({
-        id,
-        name,
-        description,
-        html_url: url,
-        homepage,
-        updated_at,
-      }) => {
-        const { data: languages } = await octokit.rest.repos.listLanguages({
-          owner: "mikef80",
-          repo: name,
-        });
+    const mappedArray = await Promise.all(
+      items.map(
+        async ({
+          id,
+          name,
+          description,
+          html_url: url,
+          homepage,
+          updated_at,
+        }) => {
+          const { data: languages } = await octokit.rest.repos.listLanguages({
+            owner: "mikef80",
+            repo: name,
+          });
 
-        let langCount = 0;
+          let langCount = 0;
 
-        for (let key in languages) {
-          langCount += languages[key];
+          for (let key in languages) {
+            langCount += languages[key];
+          }
+
+          languages.total = langCount;
+
+          return {
+            id,
+            name,
+            description,
+            url,
+            homepage,
+            languages,
+            updated_at,
+          };
         }
+      )
+    );
 
-        languages.total = langCount;
-
-        return { id, name, description, url, homepage, languages, updated_at };
-      }
-    )
-  );
-
-  return mappedArray;
+    return mappedArray;
+  } catch (error) {
+    console.error("Failed to fetch GitHub data: ", error);
+    return [];
+  }
 };
