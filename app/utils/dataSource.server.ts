@@ -79,12 +79,8 @@ const fetchGitHubData = async () => {
 };
 
 export const getDataSource = async () => {
-  console.log(process.env.NODE_ENV, " <-- NODE_ENV");
-
   if (process.env.NODE_ENV === "development") {
-    console.log("DEV");
     return localDataSource;
   }
-  console.log("PRODUCTION");
   return await fetchGitHubData();
 };
