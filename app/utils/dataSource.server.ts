@@ -73,8 +73,12 @@ const localDataSource: Project[] = [
 ];
 
 const fetchGitHubData = async () => {
+  console.log('fetching from github');
+  
   const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
   const response = await octoFetch(ghtoken);
+  console.log('completed fetch');
+  
   return response;
 };
 
