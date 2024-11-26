@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigation } from "@remix-run/react";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
 import Hero from "~/components/Hero";
@@ -23,6 +23,10 @@ export const loader = async () => {
 
 export default function Index() {
   const { projects } = useLoaderData<typeof loader>();
+  const { state } = useNavigation();
+
+  console.log(state,'<--state');
+  
 
   return (
     <>
