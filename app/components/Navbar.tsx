@@ -89,7 +89,18 @@ const Navbar = () => {
     >
       <div className="container h-20 mx-auto flex justify-between items-center">
         <div className="text-4xl font-bold font-raleway">
-          <Link to="/">Mike Francis</Link>
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (window.location.hash) {
+                e.preventDefault();
+                window.history.pushState({}, "", "/");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            Mike Francis
+          </Link>
         </div>
         <div className="block lg:hidden">
           <button
