@@ -27,8 +27,11 @@ const RenderNavLink: React.FC<RenderNavLinkProps> = ({
   const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
 
   const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    console.log('1');
+    
     // Handle special case for Home link
-    if (to === "/" && location.hash) {
+    if (location.hash) {
+      console.log('2');
       e.preventDefault(); // Prevent default navigation
       window.history.pushState({}, "", "/"); // Remove hash from URL
       window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
