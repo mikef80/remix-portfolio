@@ -30,7 +30,7 @@ const RenderNavLink: React.FC<RenderNavLinkProps> = ({
     console.log('1');
     
     // Handle special case for Home link
-    if (location.hash) {
+    if (to === "/" && location.hash) {
       console.log('2');
       e.preventDefault(); // Prevent default navigation
       window.history.pushState({}, "", "/"); // Remove hash from URL
