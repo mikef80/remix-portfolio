@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { NavLink, useLocation } from "@remix-run/react";
 import { MouseEventHandler } from "react";
 
@@ -14,37 +14,36 @@ const RenderNavLink: React.FC<RenderNavLinkProps> = ({
   label = "",
   hashCondition = "",
   closeMobileMenu,
-}) => {
+}) => {  
   const location = useLocation();
+  const memoizedHashCondition = useMemo(() => hashCondition, [hashCondition]);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     // Ensure active state is based on both pathname and hash
-    setIsActive(location.hash === hashCondition);
-  }, [location, hashCondition]);
+    console.count(label);
+    console.log(location.hash, " <-- location.hash");
+    console.log(memoizedHashCondition, " <-- memoizedHashCondition");
+
+    setIsActive(location.hash === memoizedHashCondition);
+  }, [location, memoizedHashCondition]);
 
   const activeLinkStyle = "underline underline-offset-4";
-  const linkStyles = "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
+  const linkStyles =
+    "hover:text-white block py-2 px-4 hover:bg-gray-700 rounded";
 
   const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    console.log('1');
-    
-    // Handle special case for Home link
-    if (to === "/" && location.hash) {
-      console.log('2');
-      e.preventDefault(); // Prevent default navigation
-      window.history.pushState({}, "", "/"); // Remove hash from URL
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
-    }
+    // console.log('1');
+
     closeMobileMenu(e); // Close mobile menu
   };
-
 
   return (
     <NavLink
       to={to}
       onClick={handleClick}
-      className={`${linkStyles} ${isActive ? activeLinkStyle : ""}`}>
+      // className={`${linkStyles} ${isActive ? activeLinkStyle : ""}`}
+    >
       {label}
     </NavLink>
   );

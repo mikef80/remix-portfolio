@@ -1,27 +1,27 @@
 import { Link } from "@remix-run/react";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useCallback, useEffect, useMemo, useState } from "react";
 import RenderNavLink from "./RenderNavLink";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const toggleMobileMenu = () => {
+  // Toggle the mobile menu visibility
+  const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((prev) => !prev);
-  };
+  }, []);
 
-  const closeMobileMenu = () => {
+  // Close the mobile menu
+  const closeMobileMenu = useCallback(() => {
     setShowMobileMenu(false);
-  };
+  }, []);
 
-  // Add window resize event listener
+  // Add window resize event listener to close the menu when width exceeds 1024px
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
-      if (width > 1024) {
+      if (window.innerWidth > 1024) {
         setShowMobileMenu(false);
       }
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
     };
   }, []);
 
-  // Add scroll event listeners
+  // Add scroll and click listeners for styling the navbar
   useEffect(() => {
     const navLinksMob = document.getElementById("nav-links-mob");
     const menuBar = document.getElementById("navbar");
@@ -60,27 +60,42 @@ const Navbar = () => {
     };
   }, []);
 
-  // Define navLinks
-  const navLinks = [
-    { to: "/", label: "Home", hashCondition: "#" },
-    { to: "#about", label: "About", hashCondition: "#about" },
-    { to: "#tech", label: "Tech", hashCondition: "#tech" },
-    { to: "#projects", label: "Projects", hashCondition: "#projects" },
-    // { to: "#", label: "Contact", hashCondition: "#contact" },
-  ];
+  // Navigation links
+  const navLinks = useMemo(
+    () => [
+      { to: "/", label: "Home", hashCondition: "" },
+      { to: "#about", label: "About", hashCondition: "#about" },
+      { to: "#tech", label: "Tech", hashCondition: "#tech" },
+      { to: "#projects", label: "Projects", hashCondition: "#projects" },
+      // Add more links as needed
+    ],
+    []
+  );
 
-  const renderNavLinks = (closeMenuHandler: MouseEventHandler) => {
-    return navLinks.map((link) => (
-      <li key={link.label}>
-        <RenderNavLink
-          to={link.to}
-          label={link.label}
-          hashCondition={link.hashCondition}
-          closeMobileMenu={closeMenuHandler}
-        />
-      </li>
-    ));
-  };
+  // Pre-render nav links for performance
+  const renderNavLinks = useMemo(
+    () =>
+      navLinks.map((link) => (
+        <li key={link.label}>
+          <RenderNavLink
+            to={link.to}
+            label={link.label}
+            hashCondition={link.hashCondition}
+            closeMobileMenu={closeMobileMenu}
+          />
+        </li>
+      )),
+    [navLinks, closeMobileMenu]
+  );
+
+  // Handle the main logo click
+  const handleLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.hash) {
+      e.preventDefault();
+      window.history.pushState({}, "", "/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, []);
 
   return (
     <nav
@@ -89,16 +104,7 @@ const Navbar = () => {
     >
       <div className="container h-20 mx-auto flex justify-between items-center">
         <div className="text-4xl font-bold font-raleway">
-          <Link
-            to="/"
-            onClick={(e) => {
-              if (window.location.hash) {
-                e.preventDefault();
-                window.history.pushState({}, "", "/");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }}
-          >
+          <Link to="/" onClick={handleLinkClick}>
             Mike Francis
           </Link>
         </div>
@@ -125,18 +131,12 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <ul
-          id="nav-links"
-          className="lg:flex lg:items-center lg:space-x-8 hidden"
-        >
-          {renderNavLinks(closeMobileMenu)}
+        <ul id="nav-links" className="lg:flex lg:items-center lg:space-x-8 hidden">
+          {renderNavLinks}
         </ul>
       </div>
-      <ul
-        id="nav-links-mob"
-        className={`px-4 pb-4 ${!showMobileMenu && "hidden"}`}
-      >
-        {renderNavLinks(closeMobileMenu)}
+      <ul id="nav-links-mob" className={`px-4 pb-4 ${!showMobileMenu && "hidden"}`}>
+        {renderNavLinks}
       </ul>
     </nav>
   );
