@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { MouseEventHandler } from "react";
 
 interface RenderNavLinkProps {
@@ -41,12 +41,12 @@ const RenderNavLink: React.FC<RenderNavLinkProps> = ({
 
 
   return (
-    <NavLink
+    <Link
       to={to}
       onClick={handleClick}
       className={`${linkStyles} ${isActive ? activeLinkStyle : ""}`}>
       {label}
-    </NavLink>
+    </Link>
   );
 };
 
