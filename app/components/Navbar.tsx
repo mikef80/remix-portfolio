@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import { MouseEventHandler, useEffect, useState } from "react";
-import RenderNavLink from "./RenderNavLink";
+import RenderLink from "./RenderLink";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -69,10 +69,10 @@ const Navbar = () => {
     // { to: "#", label: "Contact", hashCondition: "#contact" },
   ];
 
-  const renderNavLinks = (closeMenuHandler: MouseEventHandler) => {
+  const renderLinks = (closeMenuHandler: MouseEventHandler) => {
     return navLinks.map((link) => (
       <li key={link.label}>
-        <RenderNavLink
+        <RenderLink
           to={link.to}
           label={link.label}
           hashCondition={link.hashCondition}
@@ -91,13 +91,6 @@ const Navbar = () => {
         <div className="text-4xl font-bold font-raleway">
           <Link
             to="/"
-            onClick={(e) => {
-              if (window.location.hash) {
-                e.preventDefault();
-                window.history.pushState({}, "", "/");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }}
           >
             Mike Francis
           </Link>
@@ -129,14 +122,14 @@ const Navbar = () => {
           id="nav-links"
           className="lg:flex lg:items-center lg:space-x-8 hidden"
         >
-          {renderNavLinks(closeMobileMenu)}
+          {renderLinks(closeMobileMenu)}
         </ul>
       </div>
       <ul
         id="nav-links-mob"
         className={`px-4 pb-4 ${!showMobileMenu && "hidden"}`}
       >
-        {renderNavLinks(closeMobileMenu)}
+        {renderLinks(closeMobileMenu)}
       </ul>
     </nav>
   );
