@@ -23,7 +23,6 @@ export const loader = async () => {
 
 export default function Index() {
   const { projects } = useLoaderData<typeof loader>();
-  const { state } = useNavigation();  
 
   return (
     <>
