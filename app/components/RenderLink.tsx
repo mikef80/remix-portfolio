@@ -7,10 +7,13 @@ import {
 } from "@remix-run/react";
 import { MouseEventHandler } from "react";
 
+
+
 interface RenderLinkProps {
   to: string;
   label: string;
   hashCondition: string;
+  
   closeMobileMenu: MouseEventHandler<HTMLAnchorElement>;
 }
 

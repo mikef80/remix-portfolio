@@ -1,5 +1,5 @@
-import { Link } from "@remix-run/react";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState, MouseEventHandler } from "react";
 import RenderLink from "./RenderLink";
 
 const Navbar = () => {
@@ -89,11 +89,7 @@ const Navbar = () => {
     >
       <div className="container h-20 mx-auto flex justify-between items-center">
         <div className="text-4xl font-bold font-raleway">
-          <Link
-            to="/"
-          >
-            Mike Francis
-          </Link>
+          <Link to="/">Mike Francis</Link>
         </div>
         <div className="block lg:hidden">
           <button
