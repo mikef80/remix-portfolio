@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Link,
   useLocation,
-  useNavigate,
-  useNavigation,
 } from "@remix-run/react";
 import { MouseEventHandler } from "react";
 

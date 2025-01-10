@@ -1,5 +1,4 @@
 import Content from "./Content";
-import { v4 as uuidv4 } from "uuid";
 
 const techs = [
   {
@@ -71,8 +70,8 @@ const techs = [
     name: "Postman",
     filename: "postman",
     url: "https://www.postman.com/",
-  }
-].map((tech) => ({ ...tech, uuid: uuidv4() }));
+  },
+];
 
 const Tech = () => {
   return (
@@ -83,10 +82,9 @@ const Tech = () => {
           This list is not exhaustive, but features most of the technologies
           I've used, either in a professional or educational setting.
         </p>
-        {/* <ul className='flex flex-wrap justify-center gap-2'> */}
         <ul className="flex flex-wrap">
-          {techs.map((tech) => (
-            <li className="p-2 flex-3-col md:flex-7-col" key={tech.uuid}>
+          {techs.map((tech, index) => (
+            <li className="p-2 flex-3-col md:flex-7-col" key={index}>
               <a
                 href={tech.url}
                 target="_blank"

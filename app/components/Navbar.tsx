@@ -66,7 +66,6 @@ const Navbar = () => {
     { to: "#about", label: "About", hashCondition: "#about" },
     { to: "#tech", label: "Tech", hashCondition: "#tech" },
     { to: "#projects", label: "Projects", hashCondition: "#projects" },
-    // { to: "#", label: "Contact", hashCondition: "#contact" },
   ];
 
   const renderLinks = (closeMenuHandler: MouseEventHandler) => {
