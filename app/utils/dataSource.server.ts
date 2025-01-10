@@ -1,4 +1,5 @@
 import { octoFetch } from "~/utils/utils";
+import NodeCache from "node-cache";
 
 export type Project = {
   id: number;
@@ -72,13 +73,23 @@ const localDataSource: Project[] = [
   },
 ];
 
+const cache = new NodeCache({ stdTTL: 60 }); // Cache for 1 minute
+
 const fetchGitHubData = async () => {
-  console.log('fetching from github');
-  
+  const cacheKey = "githubData";
+  const cachedData = cache.get<Project[]>(cacheKey);
+
+  if (cachedData) {
+    console.log("returning cached data");
+    return cachedData;
+  }
+
+  console.log("Fetching from github");
   const ghtoken: string | undefined = process.env.GITHUB_TOKEN;
   const response = await octoFetch(ghtoken);
-  console.log('completed fetch');
-  
+  console.log("completed fetch");
+
+  cache.set(cacheKey, response);
   return response;
 };
 
