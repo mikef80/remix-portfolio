@@ -1,12 +1,10 @@
 import Content from "./Content";
-import { v4 as uuidv4 } from "uuid";
 
 const Socials = () => {
   const socials: {
     name: string;
     filename: string;
     url: string;
-    uuid: string;
   }[] = [
     {
       name: "GitHub",
@@ -18,7 +16,7 @@ const Socials = () => {
       filename: "linkedin",
       url: "https://www.linkedin.com/in/mpfrancis/",
     },
-  ].map((tech) => ({ ...tech, uuid: uuidv4() }));
+  ];
 
   return (
     <div
@@ -28,8 +26,8 @@ const Socials = () => {
       <div className="flex justify-center">
         <Content extraClasses="">
           <ul className="flex  gap-2">
-            {socials.map((social) => (
-              <li className="p-2" key={social.uuid}>
+            {socials.map((social, index) => (
+              <li className="p-2" key={index}>
                 <a
                   href={social.url}
                   target="_blank"
