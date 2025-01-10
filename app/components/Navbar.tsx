@@ -63,9 +63,9 @@ const Navbar = () => {
   // Define navLinks
   const navLinks = [
     { to: "/", label: "Home", hashCondition: "#" },
-    { to: "#about", label: "About", hashCondition: "#about" },
-    { to: "#tech", label: "Tech", hashCondition: "#tech" },
-    { to: "#projects", label: "Projects", hashCondition: "#projects" },
+    { to: "/#about", label: "About", hashCondition: "#about" },
+    { to: "/#tech", label: "Tech", hashCondition: "#tech" },
+    { to: "/#projects", label: "Projects", hashCondition: "#projects" },
   ];
 
   const renderLinks = (closeMenuHandler: MouseEventHandler) => {
