@@ -5,7 +5,7 @@ export default function App() {
   return <Outlet />;
 }
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout() {
   return (
     <html lang='en' className='motion-safe:scroll-smooth'>
       <head>
