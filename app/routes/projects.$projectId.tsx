@@ -1,5 +1,6 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { log } from "mathjs";
 import About from "~/components/About";
 import BackToTop from "~/components/BackToTop";
 import Hero from "~/components/Hero";
@@ -9,12 +10,12 @@ import Tech from "~/components/Tech";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const projectId = params.projectId;
+  console.log("Project ID", projectId);
   return { projectId };
 };
 
-const Projects = () => {
+const Project = () => {
   const { projectId } = useLoaderData<typeof loader>();
-  console.log(projectId);
 
   return (
     <>
@@ -33,4 +34,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Project;
