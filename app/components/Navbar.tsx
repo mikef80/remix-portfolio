@@ -42,11 +42,11 @@ const Navbar = () => {
 
       if (!isScrolled && isMenuVisible) {
         menuBar.classList.add("shadow-lg", "text-gray-800");
-        menuBar.classList.remove("bg-white", "text-white");
+        menuBar.classList.remove("bg-gray-800", "text-white");
       } else if (!isScrolled) {
-        menuBar.classList.remove("shadow-lg", "bg-white");
+        menuBar.classList.remove("shadow-lg", "bg-gray-800", "text-white");
       } else {
-        menuBar.classList.add("bg-white", "text-gray-800", "shadow-lg");
+        menuBar.classList.add("bg-gray-800", "text-white", "shadow-lg");
       }
     };
 
