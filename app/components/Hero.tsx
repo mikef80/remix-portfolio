@@ -62,7 +62,6 @@ const Hero = () => {
           speed={10}
           deletionSpeed={20}
           repeat={Infinity}
-          // style={{ color: "#FFFF00B3" }}
           style={{ color: "#00FFFFB3" }}
         />
       </section>

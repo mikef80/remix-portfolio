@@ -73,7 +73,7 @@ const localDataSource: Project[] = [
   },
 ];
 
-const cache = new NodeCache({ stdTTL: 60 }); // Cache for 1 minute
+const cache = new NodeCache({ stdTTL: 60 * 60 }); // Cache for 1 hour
 
 const fetchGitHubData = async () => {
   const cacheKey = "githubData";

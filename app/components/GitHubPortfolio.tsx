@@ -2,13 +2,11 @@ import { useState } from "react";
 import Content from "./Content";
 import { Code } from "./icons/Code";
 import { Web } from "./icons/Web";
-import { Project } from "~/routes/_index";
+import type { Project } from "../utils/dataSource.server";
 import { Link } from "@remix-run/react";
 
 // Component
 const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
-  const [portfolioProjects] = useState(projects);
-
   return (
     <div id="projects" className="scroll-mt-[5rem] text-gray-800 bg-white p-6">
       <Content>
@@ -17,7 +15,7 @@ const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
           A selection of projects, both from my bootcamp and personal projects.
         </p>
         <ul className="flex flex-wrap">
-          {portfolioProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <li key={index} className="p-3 flex-1-col md:flex-2-col">
               <div className="flex flex-col items-center">
                 <Link to={`/projects/${project.name}`}>
