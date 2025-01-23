@@ -9,7 +9,11 @@ interface ContentProps {
 const Content: FC<ContentProps> = ({ children, ...rest }) => {
   const { extraClasses } = rest;
 
-  return <div className={`max-w-5xl mx-auto ${extraClasses}`}>{children}</div>;
+  return (
+    <div className={`max-w-5xl mx-auto ${extraClasses ? extraClasses : ''}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Content;

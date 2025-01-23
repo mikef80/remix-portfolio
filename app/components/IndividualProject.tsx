@@ -3,11 +3,11 @@ import { Link } from "@remix-run/react";
 import { Code } from "./icons/Code";
 import { Web } from "./icons/Web";
 
-const IndividualProject = ({ project }: { project: Project }) => {
+const IndividualProject = ({ project }: { project: Project; }) => {  
   return (
     <li className="p-3 flex-1-col md:flex-2-col">
       <div className="flex flex-col items-center">
-        <Link to={`/projects/${project.name}`}>
+        <Link to={`/projects/${project.name}`} state={{ project }}>
           {/* <img
         src="https://picsum.photos/800/450"
         alt=""
