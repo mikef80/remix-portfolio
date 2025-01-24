@@ -71,6 +71,11 @@ const techs = [
     filename: "postman",
     url: "https://www.postman.com/",
   },
+  {
+    name: "SASS",
+    filename: "sass",
+    url: "https://sass-lang.com/",
+  },
 ];
 
 const Tech = () => {
