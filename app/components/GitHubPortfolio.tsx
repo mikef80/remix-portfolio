@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Content from "./Content";
 import { Code } from "./icons/Code";
 import { Web } from "./icons/Web";
