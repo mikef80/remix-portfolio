@@ -18,15 +18,7 @@ const GitHubPortfolio = ({ projects }: { projects: Project[] }) => {
           {projects.map((project, index) => (
             <li key={index} className="p-3 flex-1-col md:flex-2-col">
               <div className="flex flex-col items-center">
-                <Link to={`/projects/${project.name}`}>
-                  {/* <img
-                    src="https://picsum.photos/800/450"
-                    alt=""
-                    loading="lazy"
-                  /> */}
-                  <h2 className="text-2xl pb-2">{project.name}</h2>
-                </Link>
-
+                <h2 className="text-2xl pb-2">{project.name}</h2>
                 <LanguagesBar languages={project.languages} />
                 <p className="pb-2">{project.description}</p>
                 <div className="flex gap-2">
