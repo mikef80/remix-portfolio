@@ -21,10 +21,9 @@ const LanguagesBar = ({ languages }: { languages: Languages }) => {
       <div className="mb-2 text-sm italic">
         {keys.map((language, i) => {
           if (language === "total") return null;
-          console.log(i, keys.length);
 
           return (
-            <span key={i} >
+            <span key={i}>
               {language}
               {i < keys.length - 2 ? " | " : ""}
             </span>
